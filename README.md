@@ -49,6 +49,6 @@ I recently completed my co-op at Analog Devices.
 
 This repo has been created to develop code for the CS5610 web development course
 
-[Webpage link] (https://webdev-dalmeida-harvin.herokuapp.com/)
+[Webpage link](https://webdev-dalmeida-harvin.herokuapp.com/)
 
-[Assignment link] (https://docs.google.com/a/husky.neu.edu/document/d/1rxZnIRpwCzqQVJwMm7HLfKHvXiI_GLpcfBjm0ymmWXI/edit?usp=sharing)
+[Assignment link](https://docs.google.com/a/husky.neu.edu/document/d/1rxZnIRpwCzqQVJwMm7HLfKHvXiI_GLpcfBjm0ymmWXI/edit?usp=sharing)
