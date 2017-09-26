@@ -1,0 +1,29 @@
+input {
+  margin-bottom: 5px;
+}
+
+.navbar {
+  background-color: #337ab7;
+}
+.navbar-default .navbar-brand{
+  color: #ffffff;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #ffffff;
+}
+
+.navbar-default .navbar-link {
+  color: #fff;
+}
+
+.navbar-default .navbar-link:hover,
+.navbar-default .navbar-link:focus {
+  color: #fff;
+}
+
+body {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
