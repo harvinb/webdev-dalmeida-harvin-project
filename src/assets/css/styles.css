@@ -27,3 +27,14 @@ body {
   padding-top: 70px;
   padding-bottom: 70px;
 }
+
+p.pull-left {
+  padding-right: 10px;
+}
+p.pull-right {
+  padding-right: 15px;
+}
+
+.list-group-item {
+  border: none;
+}
