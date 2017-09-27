@@ -50,3 +50,16 @@ p.pull-right {
 .list-group-item {
   border: none;
 }
+
+.hbd-widget .hbd-toolbar {
+  position: absolute;
+  right: 0px;
+  background-color: grey;
+  padding: 7px;
+  border-bottom-left-radius: 10px;
+  opacity: 0.5;
+}
+
+.hbd-widget .hbd-content {
+  width: 100%;
+}
