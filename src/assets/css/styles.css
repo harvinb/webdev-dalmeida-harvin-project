@@ -23,6 +23,14 @@ input {
   color: #fff;
 }
 
+.navbar-text .portrait-hide {
+  display: inline-block;
+  left: 0;
+  right: 0;
+  margin:0;
+  float:none;
+}
+
 body {
   padding-top: 70px;
   padding-bottom: 70px;
@@ -31,10 +39,14 @@ body {
 p.pull-left {
   padding-right: 10px;
 }
+/*
 p.pull-right {
-  padding-right: 15px;
+  padding-right: 10px;
 }
-
+*/
+#combinedtick {
+  padding-right: 2.5%;
+}
 .list-group-item {
   border: none;
 }
