@@ -2,6 +2,14 @@ input {
   margin-bottom: 5px;
 }
 
+.btn {
+  margin-bottom: 5px;
+}
+
+input.form-control.ng-invalid.ng-touched{
+  border-color: #f00;
+}
+
 .navbar {
   background-color: #337ab7;
 }

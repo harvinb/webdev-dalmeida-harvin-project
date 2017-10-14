@@ -47,8 +47,10 @@ export class UserService {
 
   findUserByCredentials(username, password) {
     const credUser = this.findUserByUsername(username);
-    if (credUser.password === password) {
-      return credUser;
+    if (credUser) {
+      if (credUser.password === password) {
+        return credUser;
+      }
     }
   }
 
