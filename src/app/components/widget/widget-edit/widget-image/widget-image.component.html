@@ -3,7 +3,10 @@
   <div class="container-fluid">
 
     <p class="navbar-text pull-left">
-      <a href="widget-list.html" class="navbar-link">
+      <a [routerLink]="['/user',uId,
+          'website',wId,
+          'page',pId,
+          'widget']" class="navbar-link">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
     </p>
@@ -17,45 +20,72 @@
 
     <!--tick mark-->
     <p class="navbar-text pull-right">
-      <a href="widget-list.html" class="navbar-link">
+      <button form="ngForm" class="navbar-link" [disabled]="!f.valid">
         <span class="glyphicon glyphicon-ok"></span>
-      </a>
+      </button>
     </p>
 
   </div>
 </nav>
 
-
 <div class="container-fluid">
-  <form>
+  <form (ngSubmit) = "updateCurWidget()" #f="ngForm" id="ngForm">
     <div class="form-group">
       <label for="imagename">Name</label>
-      <input type="text" class="form-control" id="imagename" placeholder="Heading Name">
+      <input type="text"
+             [(ngModel)]="widget.name"
+             name="widgetname"
+             class="form-control"
+             id="imagename"
+             ngModel
+             required
+             #widgetName="ngModel"
+             placeholder="Heading Name">
+      <span class="help-block" *ngIf="!widgetName.valid && widgetName.touched">
+        Please enter Widget Name!
+      </span>
     </div>
-  </form>
 
-  <form>
     <div class="form-group">
       <label for="imagetext">Text</label>
-      <input type="text" class="form-control" id="imagetext" placeholder="Heading Text">
+      <input type="text"
+             [(ngModel)]="widget.text"
+             name="widgettext"
+             class="form-control"
+             id="imagetext"
+             ngModel
+             required
+             #widgetText="ngModel"
+             placeholder="Heading Text">
+      <span class="help-block" *ngIf="!widgetText.valid && widgetText.touched">
+        Please enter Widget Text!
+      </span>
     </div>
-  </form>
 
-  <form>
     <div class="form-group">
       <label for="imageurl">URL</label>
-      <input type="text" class="form-control" id="imageurl" placeholder="http://img">
-    </div>
-  </form>
+      <input type="text"
+             [(ngModel)]="widget.url"
+             name="widgetURL"
+             class="form-control"
+             id="imageurl"
+             ngModel
 
-  <form>
+             placeholder="http://img">
+    </div>
+
     <div class="form-group">
       <label for="imagewidth">Width</label>
-      <input type="text" class="form-control" id="imagewidth" placeholder="50%">
-    </div>
-  </form>
+      <input type="text"
+             [(ngModel)]="widget.width"
+             name="widgetWidth"
+             class="form-control"
+             id="imagewidth"
+             ngModel
 
-  <form>
+             placeholder="50%">
+    </div>
+
     <div class="form-group">
       <label for="imageupload">Upload</label>
       <input type="file" class="form-control" id="imageupload">
@@ -64,7 +94,7 @@
 
   <button class="btn btn-primary btn-block">Upload</button>
   <a class="btn btn-danger btn-block "
-     href="widget-list.html" >Delete</a>
+     (click)="deleteCurrentWidget()" >Delete</a>
 
 </div>
 
@@ -72,7 +102,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a href="../user/profile.html" class="navbar-link">
+      <a [routerLink]="['/user', uId]" class="navbar-link">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

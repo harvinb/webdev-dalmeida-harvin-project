@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {WidgetService} from '../../../../services/widget.service.client';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-widget-header',
@@ -14,8 +15,29 @@ export class WidgetHeaderComponent implements OnInit {
   wgId: string;
   widget: any;
 
+  @ViewChild('f') widgetForm: NgForm;
+
   constructor(private widgetService: WidgetService,
+              private router: Router,
               private route: ActivatedRoute) { }
+
+  deleteCurrentWidget(){
+    this.widgetService.deleteWidget(this.wgId);
+    //console.log('websites: ',this.webService.websites);
+    this.router.navigate(['/user', this.uId,
+      'website', this.wId,
+      'page', this.pId,
+      'widget']);
+  }
+
+  updateCurWidget() {
+    this.widgetService.updateWidget(this.wgId, this.widget);
+    //console.log(this.websites);
+    this.router.navigate(['/user', this.uId,
+      'website', this.wId,
+      'page', this.pId,
+      'widget']);
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {

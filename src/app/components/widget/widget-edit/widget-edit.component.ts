@@ -18,6 +18,7 @@ export class WidgetEditComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.wgId = params['wgid'];
       this.widget = this.widgetService.findWidgetById(this.wgId);
+      console.log(this.widget.widgetType);
     });
   }
 

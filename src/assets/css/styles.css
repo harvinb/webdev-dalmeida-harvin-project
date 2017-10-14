@@ -10,6 +10,10 @@ input.form-control.ng-invalid.ng-touched{
   border-color: #f00;
 }
 
+textarea.form-control.ng-invalid.ng-touched{
+  border-color: #f00;
+}
+
 .navbar {
   background-color: #337ab7;
 }
@@ -39,6 +43,12 @@ body {
 p.pull-left {
   padding-right: 10px;
 }
+
+button.navbar-link {
+  background-color: transparent;
+  border-color: transparent;
+}
+
 /*
 p.pull-right {
   padding-right: 10px;

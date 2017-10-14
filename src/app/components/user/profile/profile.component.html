@@ -10,60 +10,83 @@
 
     <!--tick mark-->
     <p class="navbar-text pull-right">
-      <a (click)="profileupdate()" class="navbar-link">
+      <button form="ngForm" class="navbar-link" [disabled]="!f.valid">
         <span class="glyphicon glyphicon-ok"></span>
-      </a>
+      </button>
     </p>
 
   </div>
 </nav>
 
+<div *ngIf="errorFlag"
+     class="alert alert-danger">
+  {{errorMsg}}
+</div>
 
 <div class="container-fluid">
-  <form>
+  <form (ngSubmit) = "profileupdate()" #f="ngForm" id="ngForm">
     <div class="form-group">
-      <label for="username">Username</label>
+      <label for="uname">Username</label>
       <input type="text"
              [(ngModel)]="pUser.username"
              name="username"
              class="form-control"
-             id="username"
+             id="uname"
+             ngModel
+             required
+             #username="ngModel"
              placeholder="walice">
+      <span class="help-block" *ngIf="!username.valid && username.touched">
+        Please enter username!
+      </span>
     </div>
-
-
 
     <div class="form-group">
-      <label for="email">Email address</label>
+      <label for="pemail">Email address</label>
       <input type="email"
-             [(ngModel)]="pUser.email"
              name="email"
+             [(ngModel)]="pUser.email"
              class="form-control"
-             id="email"
+             id="pemail"
+             email
+             required
+             #email="ngModel"
              placeholder="alice.wonderland@unicorn.com">
+      <span class="help-block" *ngIf="!email.valid && email.touched">
+        Please enter email!
+      </span>
     </div>
-
-
 
     <div class="form-group">
       <label for="first-name">First Name</label>
       <input type="text"
              [(ngModel)]="pUser.firstName"
+             ngModel
+             required
              name="firstname"
              class="form-control"
-             id="first-name" placeholder="Alice">
+             id="first-name"
+             #firstname="ngModel"
+             placeholder="Alice">
+      <span class="help-block" *ngIf="!firstname.valid && firstname.touched">
+        Please enter Firstname!
+      </span>
     </div>
-
-
 
     <div class="form-group">
       <label for="last-name">Last Name</label>
       <input type="text"
              [(ngModel)]="pUser.lastName"
+             ngModel
+             required
              name="lastname"
              class="form-control"
              id="last-name"
+             #lastname="ngModel"
              placeholder="Wonderland">
+      <span class="help-block" *ngIf="!lastname.valid && lastname.touched">
+        Please enter Lastname!
+      </span>
     </div>
   </form>
   <a class="btn btn-primary btn-block"
