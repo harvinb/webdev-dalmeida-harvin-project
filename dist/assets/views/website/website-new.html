@@ -1,9 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags for making website for mobile-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="initial-scale=1, user-scalable=no">
+
+
+  <meta charset="UTF-8">
+  <title>New Website</title>
+  <link href="../../vendors/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+
+
+  <!-- STYLE sheet comes after all the libraries are loaded. Document style-->
+
+  <link href="../../css/styles.css" rel="stylesheet"/>
+</head>
+<body>
 <div class="container-fluid">
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row">
       <div class="col-sm-4 hidden-xs">
         <p class="navbar-text pull-left">
-          <a [routerLink]="['/user',uId,'website']" class="navbar-link">
+          <a href="website-list.html" class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left"></span>
           </a>
         </p>
@@ -15,7 +34,7 @@
         </p>
         <!--plus mark-->
         <p class="navbar-text pull-right">
-          <a [routerLink]="['/user',uId,'website','new']" class="navbar-link">
+          <a href="website-new.html" class="navbar-link">
             <span class="glyphicon glyphicon-plus"></span>
           </a>
         </p>
@@ -29,9 +48,9 @@
         </p>
         <!--tick mark-->
         <p class="navbar-text pull-right" id="combinedtick">
-          <button form="ngForm" class="navbar-link" [disabled]="!f.valid">
+          <a href="website-list.html" class="navbar-link">
             <span class="glyphicon glyphicon-ok"></span>
-          </button>
+          </a>
         </p>
       </div>
     </div>
@@ -42,47 +61,50 @@
   <div class="row">
     <div class="col-sm-4 hidden-xs">
       <ul class="list-group">
-        <li *ngFor="let website of websites" class="list-group-item">
-          <a [routerLink]="['/user',uId,'website',website._id,'page']">{{website.name}}</a>
-          <a [routerLink]="['/user',uId,'website',website._id]" class="pull-right">
+        <li class="list-group-item">
+          <a href="../page/page-list.html">Address book app</a>
+          <a href="website-edit.html" class="pull-right">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </li>
+        <li class="list-group-item">
+          <a href="../page/page-list.html">Blogger</a>
+          <a href="website-edit.html" class="pull-right">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="../page/page-list.html">Blogger app</a>
+          <a href="website-edit.html" class="pull-right">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="../page/page-list.html">Script Testing app</a>
+          <a href="website-edit.html" class="pull-right">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </li>
+
       </ul>
 
     </div>
     <div class="col-sm-8">
-
-      <form (ngSubmit) = "createNewWebsite()" #f="ngForm" id="ngForm">
+      <form>
         <div class="form-group">
-          <label for="websitename">Website Name</label>
-          <input type="text"
-                 name="sitename"
-                 class="form-control"
-                 id="websitename"
-                 ngModel
-                 required
-                 #websiteName="ngModel"
-                 placeholder="Name">
-          <span class="help-block" *ngIf="!websiteName.valid && websiteName.touched">
-            Please enter Website Name!
-          </span>
+          <label for="websitename">Name</label>
+          <input type="text" class="form-control" id="websitename" placeholder="Name">
         </div>
+      </form>
 
+      <form>
         <div class="form-group">
           <label for="websitedescription">Description</label>
           <textarea type="text"
-                    name="description"
                     rows="5"
                     class="form-control"
                     id="websitedescription"
-                    ngModel
-                    required
-                    #description="ngModel"
                     placeholder="Description"></textarea>
-          <span class="help-block" *ngIf="!description.valid && description.touched">
-            Please enter description!
-          </span>
         </div>
       </form>
     </div>
@@ -93,10 +115,15 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a [routerLink]="['/user', uId]" class="navbar-link">
+      <a href="../user/profile.html" class="navbar-link">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>
 
   </div>
 </nav>
+
+
+
+</body>
+</html>
