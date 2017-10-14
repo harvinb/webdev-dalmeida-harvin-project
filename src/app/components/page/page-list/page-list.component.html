@@ -2,7 +2,7 @@
   <div class="container-fluid">
 
     <p class="navbar-text pull-left">
-      <a href="../website/website-list.html" class="navbar-link">
+      <a [routerLink]="['/user',uId,'website']" class="navbar-link">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
     </p>
@@ -16,7 +16,7 @@
 
     <!--plus mark-->
     <p class="navbar-text pull-right">
-      <a href="page-new.html" class="navbar-link">
+      <a [routerLink]="['/user',uId,'website',wId,'page','new']" class="navbar-link">
         <span class="glyphicon glyphicon-plus"></span>
       </a>
     </p>
@@ -27,66 +27,20 @@
 
 <div class="container-fluid">
   <ul class="list-group">
-    <li class="list-group-item">
+    <li *ngFor="let page of pageList" class="list-group-item">
       <div class="row">
         <div class="col-xs-9 col-sm-6 col-md-4">
-          <a href="../widget/widget-list.html">Blog Post</a>
+          <a [routerLink]="['/user',uId,
+          'website',wId,
+          'page',page._id,
+          'widget']">{{page.name}}</a>
         </div>
-        <div class="col-md-4 hidden-xs hidden-sm">8/15/2017</div>
+        <div class="col-md-4 hidden-xs hidden-sm">{{page.dateCreated}}</div>
         <div class="col-md-4">
-          <a href="page-edit.html" class="pull-right">
-            <span class="glyphicon glyphicon-cog"> </span>
-          </a>
-        </div>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-xs-9 col-sm-6 col-md-4">
-          <a href="../widget/widget-list.html">Blogs</a>
-        </div>
-        <div class="col-md-4 hidden-xs hidden-sm">8/16/2017</div>
-        <div class="col-md-4">
-          <a href="page-edit.html" class="pull-right">
-            <span class="glyphicon glyphicon-cog"> </span>
-          </a>
-        </div>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-xs-9 col-sm-6 col-md-4">
-          <a href="../widget/widget-list.html">Home</a>
-        </div>
-        <div class="col-md-4 hidden-xs hidden-sm">8/20/2017</div>
-        <div class="col-md-4">
-          <a href="page-edit.html" class="pull-right">
-            <span class="glyphicon glyphicon-cog"> </span>
-          </a>
-        </div>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-xs-9 col-sm-6 col-md-4">
-          <a href="../widget/widget-list.html">About</a>
-        </div>
-        <div class="col-md-4 hidden-xs hidden-sm">9/9/2017</div>
-        <div class="col-md-4">
-          <a href="page-edit.html" class="pull-right">
-            <span class="glyphicon glyphicon-cog"> </span>
-          </a>
-        </div>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-xs-9 col-sm-6 col-md-4">
-          <a href="../widget/widget-list.html">Contact Us</a>
-        </div>
-        <div class="col-md-4 hidden-xs hidden-sm">9/15/2017</div>
-        <div class="col-md-4">
-          <a href="page-edit.html" class="pull-right">
+          <a [routerLink]="['/user',uId,
+          'website',wId,
+          'page',page._id]"
+             class="pull-right">
             <span class="glyphicon glyphicon-cog"> </span>
           </a>
         </div>
@@ -99,7 +53,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a href="../user/profile.html" class="navbar-link">
+      <a [routerLink]="['/user', uId]" class="navbar-link">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

@@ -3,7 +3,10 @@
   <div class="container-fluid">
 
     <p class="navbar-text pull-left">
-      <a href="widget-list.html" class="navbar-link">
+      <a [routerLink]="['/user',uId,
+          'website',wId,
+          'page',pId,
+          'widget']" class="navbar-link">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
     </p>
@@ -30,18 +33,17 @@
   <form>
     <div class="form-group">
       <label for="headingname">Name</label>
-      <input type="text" class="form-control" id="headingname" placeholder="Heading Name">
+      <input type="text"
+             class="form-control"
+             id="headingname"
+             placeholder="Heading Name">
     </div>
-  </form>
 
-  <form>
     <div class="form-group">
       <label for="headingtext">Text</label>
       <input type="text" class="form-control" id="headingtext" placeholder="Heading Text">
     </div>
-  </form>
 
-  <form>
     <div class="form-group">
       <label for="headingsize">Size</label>
       <input type="text" class="form-control" id="headingsize" placeholder="2">
@@ -57,7 +59,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a href="../user/profile.html" class="navbar-link">
+      <a [routerLink]="['/user', uId]" class="navbar-link">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

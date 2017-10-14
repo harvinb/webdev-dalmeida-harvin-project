@@ -1,17 +1,20 @@
 <div class="container-fluid">
   <h1>Register</h1>
-  <input placeholder="username"
+  <input [(ngModel)] = "username"
+         placeholder="username"
          type="text"
          class="form-control"/>
-  <input placeholder="password"
+  <input [(ngModel)] = "password"
+         placeholder="password"
          type="password"
          class="form-control"/>
-  <input placeholder="verify password"
+  <input [(ngModel)] = "verifypwd"
+         placeholder="verify password"
          type="password"
          class="form-control"/>
   <a class="btn btn-primary btn-block"
-     href="profile.html">Register</a>
+     (click)="register(username,password,verifypwd)">Register</a>
   <a class="btn btn-danger btn-block"
-     href="login.html" >Cancel</a>
+     [routerLink]="['/login']" >Cancel</a>
 
 </div>

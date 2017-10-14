@@ -56,3 +56,17 @@ p.pull-right {
   width: 100%;
 }
 
+.youtubeWrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  margin-right: 40px; /* to avoid overlap between cog and youtube share */
+  height: 0;
+}
+.youtubeWrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

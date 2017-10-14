@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-sm-4 hidden-xs">
         <p class="navbar-text pull-left">
-          <a href="website-list.html" class="navbar-link">
+          <a [routerLink]="['/user',uId,'website']" class="navbar-link">
             <span class="glyphicon glyphicon-chevron-left"></span>
           </a>
         </p>
@@ -15,7 +15,7 @@
         </p>
         <!--plus mark-->
         <p class="navbar-text pull-right">
-          <a href="website-new.html" class="navbar-link">
+          <a [routerLink]="['/user',uId,'website','new']" class="navbar-link">
             <span class="glyphicon glyphicon-plus"></span>
           </a>
         </p>
@@ -42,31 +42,12 @@
   <div class="row">
     <div class="col-sm-4 hidden-xs">
       <ul class="list-group">
-        <li class="list-group-item">
-          <a href="../page/page-list.html">Address book app</a>
-          <a href="website-edit.html" class="pull-right">
+        <li *ngFor="let website of websites" class="list-group-item">
+          <a [routerLink]="['/user',uId,'website',website._id,'page']">{{website.name}}</a>
+          <a [routerLink]="['/user',uId,'website',website._id]" class="pull-right">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </li>
-        <li class="list-group-item">
-          <a href="../page/page-list.html">Blogger</a>
-          <a href="website-edit.html" class="pull-right">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a href="../page/page-list.html">Blogger app</a>
-          <a href="website-edit.html" class="pull-right">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </li>
-        <li class="list-group-item">
-          <a href="../page/page-list.html">Script Testing app</a>
-          <a href="website-edit.html" class="pull-right">
-            <span class="glyphicon glyphicon-cog"></span>
-          </a>
-        </li>
-
       </ul>
 
     </div>
@@ -96,7 +77,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a href="../user/profile.html" class="navbar-link">
+      <a [routerLink]="['/user', uId]" class="navbar-link">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

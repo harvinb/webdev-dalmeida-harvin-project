@@ -20,10 +20,10 @@ import {WidgetChooserComponent} from './components/widget/widget-chooser/widget-
 import {WidgetEditComponent} from './components/widget/widget-edit/widget-edit.component';
 
 const APP_ROUTES: Routes = [
-  {path: '',                                              component : LoginComponent},
-  {path: 'default',                                       component : LoginComponent},
+  {path: '',                                              component: LoginComponent},
+  {path: 'default',                                       component: LoginComponent},
   {path: 'login' ,                                        component: LoginComponent},
-  {path: 'register' ,                                     component:  RegisterComponent},
+  {path: 'register' ,                                     component: RegisterComponent},
   {path: 'user/:uid',                                     component: ProfileComponent},
   {path: 'user/:uid/website',                             component: WebsiteListComponent},
   {path: 'user/:uid/website/new',                         component: WebsiteNewComponent},
