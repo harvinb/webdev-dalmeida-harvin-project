@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   profileupdate() {
-    if (this.userService.findUserByUsername(this.pUser.username)) {
+    if (this.userService.findUserByUsername(this.pUser.username)._id !== this.pUserId) {
       this.errorMsg = 'Username is already taken';
       this.errorFlag = true;
     } else {
