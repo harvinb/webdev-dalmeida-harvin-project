@@ -30,6 +30,7 @@ export class WebsiteEditComponent implements OnInit {
     this.webService.updateWebsite(this.wId, this.curwebsite);
     this.websites = this.webService.findWebsitesByUser(this.uId);
     //console.log(this.websites);
+    this.router.navigate(['/user', this.uId, 'website']);
   }
 
   ngOnInit() {

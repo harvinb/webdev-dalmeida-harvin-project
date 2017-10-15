@@ -29,6 +29,7 @@ export class PageEditComponent implements OnInit {
   updateCurPage() {
     this.pageService.updatePage(this.pId, this.curPage);
     this.pageList = this.pageService.findPageByWebsiteId(this.wId);
+    this.router.navigate(['/user', this.uId, 'website', this.wId, 'page']);
     //console.log(this.websites);
   }
 

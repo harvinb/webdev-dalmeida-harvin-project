@@ -20,15 +20,15 @@ export class WidgetChooserComponent implements OnInit {
     let newWidget = this.widgetService.createWidget(this.pId,{
       widgetType: wgType
     });
-    /*
+
     if (newWidget) {
       this.router.navigate(['/user', this.uId,
         'website', this.wId,
         'page', this.pId,
         'widget', newWidget._id]);
     }
-    */
-    // TODO: Above code wont work till we can save the array
+
+    // TODO: Routing to widget edit wont work till we can save the widget to a db
     console.log(this.widgetService.findWidgetsByPageId(this.pId));
   }
 
