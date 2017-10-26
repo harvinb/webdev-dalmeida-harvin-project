@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WidgetService} from '../../../../services/widget.service.client';
 import {NgForm} from '@angular/forms';
+import {Widget} from '../../../../models/widget/widget.model.client';
 
 @Component({
   selector: 'app-widget-header',
@@ -13,7 +14,7 @@ export class WidgetHeaderComponent implements OnInit {
   wId: string;
   pId: string;
   wgId: string;
-  widget: any;
+  widget: Widget;
 
   @ViewChild('f') widgetForm: NgForm;
 
@@ -22,21 +23,21 @@ export class WidgetHeaderComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   deleteCurrentWidget(){
-    this.widgetService.deleteWidget(this.wgId);
-    //console.log('websites: ',this.webService.websites);
-    this.router.navigate(['/user', this.uId,
-      'website', this.wId,
-      'page', this.pId,
-      'widget']);
+    this.widgetService.deleteWidget(this.wgId).subscribe((widget: Widget) => {
+      this.router.navigate(['/user', this.uId,
+        'website', this.wId,
+        'page', this.pId,
+        'widget']);
+    });
   }
 
   updateCurWidget() {
-    this.widgetService.updateWidget(this.wgId, this.widget);
-    //console.log(this.websites);
-    this.router.navigate(['/user', this.uId,
-      'website', this.wId,
-      'page', this.pId,
-      'widget']);
+    this.widgetService.updateWidget(this.wgId, this.widget).subscribe((widget: Widget) => {
+      this.router.navigate(['/user', this.uId,
+        'website', this.wId,
+        'page', this.pId,
+        'widget']);
+    });
   }
 
   ngOnInit() {
@@ -45,7 +46,9 @@ export class WidgetHeaderComponent implements OnInit {
       this.wId = params['wid'];
       this.pId = params['pid'];
       this.wgId = params['wgid'];
-      this.widget = this.widgetService.findWidgetById(this.wgId);
+      this.widgetService.findWidgetById(this.wgId).subscribe((widget: Widget) => {
+        this.widget = widget;
+      });
     });
   }
 

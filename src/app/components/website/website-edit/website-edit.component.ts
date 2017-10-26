@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {WebsiteService} from '../../../services/website.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
+import {Website} from '../../../models/website/website.model.client';
 
 @Component({
   selector: 'app-website-edit',
@@ -11,8 +12,8 @@ import {NgForm} from '@angular/forms';
 export class WebsiteEditComponent implements OnInit {
   uId: string;
   wId: string;
-  websites = [{}];
-  curwebsite: any;
+  websites: Website[];
+  curwebsite: Website;
 
   @ViewChild('f') websiteForm: NgForm;
 
@@ -21,25 +22,37 @@ export class WebsiteEditComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   deleteCurrentWebsite(){
-    this.webService.deleteWebsite(this.wId);
-    //console.log('websites: ',this.webService.websites);
-    this.router.navigate(['/user', this.uId, 'website']);
+    this.webService.deleteWebsite(this.wId).subscribe((websiteList: Website[]) => {
+      this.websites = websiteList;
+      this.router.navigate(['/user', this.uId, 'website']);
+    });
+    // console.log('websites: ',this.webService.websites);
   }
 
   updateCurWebsite() {
-    this.webService.updateWebsite(this.wId, this.curwebsite);
-    this.websites = this.webService.findWebsitesByUser(this.uId);
-    //console.log(this.websites);
-    this.router.navigate(['/user', this.uId, 'website']);
+    this.webService.updateWebsite(this.wId, this.curwebsite).subscribe((website: Website[]) => {
+      // this.websites = website;
+      this.router.navigate(['/user', this.uId, 'website']);
+    });
+    // this.websites = this.webService.findWebsitesByUser(this.uId);
+    // console.log(this.websites);
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.uId = params['uid'];
       this.wId = params['wid'];
-      this.websites = this.webService.findWebsitesByUser(this.uId);
-      this.curwebsite = this.webService.findWebsiteById(this.wId);
-      //console.log('websites: ',this.websites);
+
+      this.webService.findWebsitesByUser(this.uId)
+        .subscribe((websiteList: Website[]) => {
+          this.websites = websiteList;
+        });
+
+      this.webService.findWebsiteById(this.wId)
+        .subscribe((website: Website) => {
+          this.curwebsite = website;
+        });
+      // console.log('websites: ',this.websites);
     });
   }
 

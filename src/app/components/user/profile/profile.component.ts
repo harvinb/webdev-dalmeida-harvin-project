@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../../../services/user.service.client';
 import {ActivatedRoute} from '@angular/router';
 import {NgForm} from '@angular/forms';
+import {User} from '../../../models/user/user.model.client';
 
 @Component({
   selector: 'app-profile',
@@ -10,7 +11,7 @@ import {NgForm} from '@angular/forms';
 })
 export class ProfileComponent implements OnInit {
   pUserId: string;
-  pUser: any;
+  pUser: User;
   errorFlag: boolean;
   errorMsg: string;
 
@@ -20,20 +21,33 @@ export class ProfileComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   profileupdate() {
-    if (this.userService.findUserByUsername(this.pUser.username)._id !== this.pUserId) {
-      this.errorMsg = 'Username is already taken';
-      this.errorFlag = true;
-    } else {
-      this.userService.updateUser(this.pUserId, this.pUser);
-      //console.log('user: ', this.userService.users);
-    }
+
+    this.userService.findUserByUsername(this.pUser.username).
+    subscribe((user: User) => {
+      if (user._id !== this.pUserId ) {
+        this.errorMsg = 'Username is already taken';
+        this.errorFlag = true;
+      } else {
+        this.userService.updateUser(this.pUserId, this.pUser)
+          .subscribe((updateduser: User) => {
+            this.pUser = updateduser;
+            console.log(this.pUser);
+          });
+      }
+    });
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.pUserId = params['uid'];
-      this.pUser = this.userService.findUserById(this.pUserId);
+      this.userService.findUserById(this.pUserId)
+        .subscribe((user: User) => {
+          this.pUser = user;
+          console.log(user);
+
+        });
     });
+    // console.log(this.pUser);
   }
 
 }

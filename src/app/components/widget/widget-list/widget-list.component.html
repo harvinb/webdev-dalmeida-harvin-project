@@ -63,7 +63,7 @@
               <span class="glyphicon glyphicon-cog"></span></a>
             <span class="glyphicon glyphicon-menu-hamburger"></span>
           </div>
-          <div class="youtubeWrap">
+          <div class="youtubeWrap" style.width="{{widget.width}}">
             <iframe width="560"
                     height="315"
                     [src]="trustYoutubeUrl(widget.url)"
@@ -86,7 +86,7 @@
               <span class="glyphicon glyphicon-cog"></span></a>
             <span class="glyphicon glyphicon-menu-hamburger"></span>
           </div>
-          <img class="hbd-content" src="{{widget.url}}">
+          <img class="hbd-content" src="{{widget.url}}" style.width="{{widget.width}}">
         </div>
       </div>
     </div>

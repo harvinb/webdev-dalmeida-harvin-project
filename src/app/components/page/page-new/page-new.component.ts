@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PageService} from '../../../services/page.service.client';
 import {NgForm} from '@angular/forms';
+import {Page} from '../../../models/page/page.model.client';
 
 @Component({
   selector: 'app-page-new',
@@ -11,7 +12,7 @@ import {NgForm} from '@angular/forms';
 export class PageNewComponent implements OnInit {
   uId: string;
   wId: string;
-  pageList = [{}];
+  pageList: Page[];
 
   @ViewChild('f') pageForm: NgForm;
 
@@ -20,19 +21,22 @@ export class PageNewComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   createNewPage() {
-    this.pageService.createPage(this.wId,{
-      name: this.pageForm.value.pagename,
-      description: this.pageForm.value.pagetitle
+    const newpage: Page = new Page
+    ('', this.pageForm.value.pagename, this.pageForm.value.pagetitle);
+    this.pageService.createPage(this.wId, newpage).subscribe((pages: Page[]) => {
+      this.router.navigate(['/user', this.uId, 'website', this.wId, 'page']);
     });
-    this.pageList = this.pageService.findPageByWebsiteId(this.wId);
-    this.router.navigate(['/user', this.uId, 'website', this.wId, 'page']);
+    // this.pageList = this.pageService.findPageByWebsiteId(this.wId);
+
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.uId = params['uid'];
       this.wId = params['wid'];
-      this.pageList = this.pageService.findPageByWebsiteId(this.wId);
+      this.pageService.findPageByWebsiteId(this.wId).subscribe((page: Page[]) => {
+        this.pageList = page;
+      });
     });
   }
 
