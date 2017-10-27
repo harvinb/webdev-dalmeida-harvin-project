@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WidgetService} from '../../../../services/widget.service.client';
 import {Widget} from '../../../../models/widget/widget.model.client';
+import {environment} from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-widget-image',
@@ -15,12 +16,13 @@ export class WidgetImageComponent implements OnInit {
   pId: string;
   wgId: string;
   widget: Widget;
+  baseUrl = environment.baseUrl;
 
   @ViewChild('f') widgetForm: NgForm;
 
   constructor(private widgetService: WidgetService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {console.log(route); }
 
   deleteCurrentWidget(){
     this.widgetService.deleteWidget(this.wgId).subscribe((widget: Widget) => {

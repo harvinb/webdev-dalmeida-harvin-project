@@ -85,14 +85,19 @@
 
              placeholder="50%">
     </div>
-
-    <div class="form-group">
-      <label for="imageupload">Upload</label>
-      <input type="file" class="form-control" id="imageupload">
-    </div>
   </form>
 
-  <button class="btn btn-primary btn-block">Upload</button>
+  <form ngNoForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
+    <input  name="myFile"   type="file" class="form-control"/>
+    <input  name="widgetId" value="{{wgId}}"   style="display: none"/>
+    <input  name="websiteId" value="{{wId}}"   style="display: none"/>
+    <input  name="pageId" value="{{pId}}"   style="display: none"/>
+    <input  name="userId" value="{{uId}}"   style="display: none"/>
+    <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+    <br/>
+  </form>
+
+
   <a class="btn btn-danger btn-block "
      (click)="deleteCurrentWidget()" >Delete</a>
 
