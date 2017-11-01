@@ -1,0 +1,19 @@
+<h1>Matches API test</h1>
+
+<h2>Recent Matches Details</h2>
+
+<ul class="list-group">
+  <li *ngFor="let match of matches">
+    Match ID : {{match.match_id}}
+    Tournament : {{match.league_name}}
+
+    Result:
+    <b *ngIf="(match.radiant === true && match.radiant_win === true); else loss">win</b>
+    <ng-template #loss>
+      <b>loss</b>
+    </ng-template>
+
+
+
+  </li>
+</ul>

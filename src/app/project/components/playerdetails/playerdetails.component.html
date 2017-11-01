@@ -1,0 +1,11 @@
+<h1>Players API test</h1>
+
+<h2>Players Details</h2>
+
+<div>
+  Account id: {{proPlayer.account_id}} <br>
+  Avatar: <img src="{{proPlayer.avatar}}"> <br>
+  Name : {{proPlayer.name}} <br>
+  Team Name : {{proPlayer.team_name}} <br>
+  <a [routerLink]="['/project','matches',proPlayer.team_id]">Recent Matches</a>
+</div>

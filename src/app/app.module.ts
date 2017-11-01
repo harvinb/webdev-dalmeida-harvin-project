@@ -28,6 +28,11 @@ import {UserService} from './services/user.service.client';
 import {WebsiteService} from './services/website.service.client';
 import {PageService} from './services/page.service.client';
 import {WidgetService} from './services/widget.service.client';
+import { PlayersComponent } from './project/components/players/players.component';
+import { MatchesComponent } from './project/components/matches/matches.component';
+import {PlayerServiceClient} from './project/services/player.service.client';
+import {PlayerdetailsComponent} from './project/components/playerdetails/playerdetails.component';
+import {MatchServiceClient} from './project/services/match.service.client';
 
 @NgModule({
   // Declare components here
@@ -49,7 +54,10 @@ import {WidgetService} from './services/widget.service.client';
     WidgetListComponent,
     WidgetHeaderComponent,
     WidgetImageComponent,
-    WidgetYoutubeComponent
+    WidgetYoutubeComponent,
+    PlayersComponent,
+    MatchesComponent,
+    PlayerdetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +66,7 @@ import {WidgetService} from './services/widget.service.client';
     Routing
   ],
   // Client Side services here
-  providers: [UserService, WebsiteService, PageService, WidgetService],
+  providers: [UserService, WebsiteService, PageService, WidgetService, PlayerServiceClient, MatchServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

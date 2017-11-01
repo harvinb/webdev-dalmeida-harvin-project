@@ -1,0 +1,14 @@
+<h1>Players API test</h1>
+
+<label>Player Search</label>
+<input [(ngModel)]="playerName"
+       placeholder="Miracle"
+       class="form-control"/>
+<button (click)="searchPlayer()"
+        class="btn btn-primary btn-block"> Search </button>
+
+<ul class="list-group">
+  <li *ngFor="let proplayer of playerList">
+    Name : <a [routerLink]="['/project','players',proplayer.account_id]">{{proplayer.name}}</a>
+  </li>
+</ul>

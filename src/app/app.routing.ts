@@ -18,9 +18,15 @@ import {PageEditComponent} from './components/page/page-edit/page-edit.component
 import {WidgetListComponent} from './components/widget/widget-list/widget-list.component';
 import {WidgetChooserComponent} from './components/widget/widget-chooser/widget-chooser.component';
 import {WidgetEditComponent} from './components/widget/widget-edit/widget-edit.component';
+import {PlayersComponent} from './project/components/players/players.component';
+import {PlayerdetailsComponent} from './project/components/playerdetails/playerdetails.component';
+import {MatchesComponent} from './project/components/matches/matches.component';
 
 const APP_ROUTES: Routes = [
   {path: '',                                              component: LoginComponent},
+  {path: 'project/players',                               component: PlayersComponent},
+  {path: 'project/players/:playerid',                     component: PlayerdetailsComponent},
+  {path: 'project/matches/:teamid',                       component: MatchesComponent},
   {path: 'default',                                       component: LoginComponent},
   {path: 'login' ,                                        component: LoginComponent},
   {path: 'register' ,                                     component: RegisterComponent},
