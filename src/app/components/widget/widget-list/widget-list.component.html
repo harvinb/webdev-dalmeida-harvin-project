@@ -36,7 +36,7 @@
 
   <div *ngFor="let widget of widgets">
 
-    <div [ngSwitch]="widget.widgetType">
+    <div [ngSwitch]="widget.type">
 
       <div *ngSwitchCase="'HEADING'">
         <div class="hbd-widget">
@@ -50,6 +50,45 @@
             <span class="glyphicon glyphicon-menu-hamburger"></span>
           </div>
           <h1>{{widget.text}}</h1>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'HTML'">
+        <div class="hbd-widget">
+          <div class="hbd-toolbar">
+            <a [routerLink]="['/user',uId,
+                'website',wId,
+                'page',pId,
+                'widget',widget._id]"
+               class="navbar-link">
+              <span class="glyphicon glyphicon-cog"></span></a>
+            <span class="glyphicon glyphicon-menu-hamburger"></span>
+          </div>
+          <div [innerHtml]="widget.text"></div>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'INPUT'">
+        <div class="hbd-widget">
+          <div class="hbd-toolbar">
+            <a [routerLink]="['/user',uId,
+                'website',wId,
+                'page',pId,
+                'widget',widget._id]"
+               class="navbar-link">
+              <span class="glyphicon glyphicon-cog"></span></a>
+            <span class="glyphicon glyphicon-menu-hamburger"></span>
+          </div>
+          <div *ngIf="widget.formatted">
+            <quill-editor [(ngModel)]="widget.text" name="text"></quill-editor>
+          </div>
+
+          <input *ngIf="!widget.formatted && (!widget.rows || widget.rows===1)"
+                 placeholder="{{widget.placeholder}}" class="form-control"/>
+
+          <textarea *ngIf="!widget.formatted && (widget.rows > 1)"
+                    rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+                    class="form-control">{{widget.text}}</textarea>
         </div>
       </div>
 

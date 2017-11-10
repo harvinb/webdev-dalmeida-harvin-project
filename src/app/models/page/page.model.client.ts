@@ -1,12 +1,13 @@
+import {Website} from '../website/website.model.client';
+
 export class Page {
   _id: string;
   name: string;
-  websiteId: string;
+  _website: Website;
   description: string;
   dateCreated: string;
 
-  constructor(_id: string, name: string, description: string) {
-    this._id = _id;
+  constructor(name: string, description: string) {
     this.name = name;
     this.description = description;
   }

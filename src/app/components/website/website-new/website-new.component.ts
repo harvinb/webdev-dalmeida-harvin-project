@@ -21,7 +21,7 @@ export class WebsiteNewComponent implements OnInit {
 
   createNewWebsite() {
     const website: Website = new Website
-      ('', this.websiteForm.value.sitename, this.websiteForm.value.description);
+      (this.websiteForm.value.sitename, this.websiteForm.value.description);
     this.webService.createWebsite(this.uId, website)
       .subscribe((websiteList: Website[]) => {
         this.websites = websiteList;

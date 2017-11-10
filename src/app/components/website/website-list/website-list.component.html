@@ -33,7 +33,7 @@
           <a [routerLink]="['/user',uId,'website',website._id,'page']">{{website.name}}</a>
         </div>
         <div class="col-md-3 hidden-xs hidden-sm">{{website.dateCreated}}</div>
-        <div class="col-xs-3 col-sm-3 col-md-3 hidden-xs">{{user.firstName}}</div>
+        <div class="col-xs-3 col-sm-3 col-md-3 hidden-xs">{{website._user.username}}</div>
         <div class="col-md-3">
           <a [routerLink]="['/user',uId,'website',website._id]" class="pull-right">
             <span class="glyphicon glyphicon-cog"> </span>

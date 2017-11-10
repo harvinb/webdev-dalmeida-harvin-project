@@ -13,7 +13,6 @@ import {User} from '../../../models/user/user.model.client';
 export class WebsiteListComponent implements OnInit {
   uId: string;
   websiteList: Website[];
-  user: any;
 
   constructor(private webService: WebsiteService,
               private userService: UserService,
@@ -25,11 +24,7 @@ export class WebsiteListComponent implements OnInit {
       this.webService.findWebsitesByUser(this.uId)
         .subscribe((websiteList: Website[]) => {
           this.websiteList = websiteList;
-      });
-
-      this.userService.findUserById(this.uId).
-      subscribe((user: User) => {
-        this.user = user;
+          console.log(this.websiteList);
       });
     });
   }

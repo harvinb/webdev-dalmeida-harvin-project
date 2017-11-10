@@ -29,9 +29,9 @@ export class ProfileComponent implements OnInit {
         this.errorFlag = true;
       } else {
         this.userService.updateUser(this.pUserId, this.pUser)
-          .subscribe((updateduser: User) => {
-            this.pUser = updateduser;
-            console.log(this.pUser);
+          .subscribe((status) => {
+            // this.pUser = updateduser;
+            console.log(status);
           });
       }
     });

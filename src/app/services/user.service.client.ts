@@ -23,7 +23,7 @@ export class UserService {
   };
 
   createUser(username: string, password: string) {
-    const user: User = new User('', username, password);
+    const user: User = new User(username, password);
     const url = this.baseUrl + '/api/user';
 
     const baseUrl = environment.baseUrl;

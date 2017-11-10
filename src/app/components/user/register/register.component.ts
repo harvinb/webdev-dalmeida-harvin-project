@@ -23,8 +23,8 @@ export class RegisterComponent implements OnInit {
 
     this.userService.findUserByUsername(this.regForm.value.username).
     subscribe((user: User) => {
-      if (user.username) {
-        console.log(user);
+      if (user) {
+        // console.log(user);
         this.errorMsg = 'Username is already taken';
         this.errorFlag = true;
       } else if (this.regForm.value.password !== this.regForm.value.verifypwd) {

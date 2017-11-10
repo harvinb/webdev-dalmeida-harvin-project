@@ -1,15 +1,25 @@
+import {Page} from '../page/page.model.client';
+
 export class Widget {
   _id: string;
-  widgetType: string;
+  type: string;
   name: string;
-  pageId: string;
+  _page: Page;
   size: number;
   text: string;
   width: string;
   url: string;
+  placeholder: string;
+  description: string;
+  height: string;
+  rows: number;
+  class: string;
+  icon: string;
+  deletable: boolean;
+  formatted: boolean;
+  dateCreated: Date;
 
-  constructor(_id: string, wgtype: string) {
-    this._id = _id;
-    this.widgetType = wgtype;
+  constructor(wgtype: string) {
+    this.type = wgtype;
   }
 }

@@ -23,6 +23,7 @@ import { WidgetListComponent } from './components/widget/widget-list/widget-list
 import { WidgetHeaderComponent } from './components/widget/widget-edit/widget-header/widget-header.component';
 import { WidgetImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
 import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
+import { QuillEditorModule } from 'ngx-quill-editor';
 
 import {UserService} from './services/user.service.client';
 import {WebsiteService} from './services/website.service.client';
@@ -33,6 +34,8 @@ import { MatchesComponent } from './project/components/matches/matches.component
 import {PlayerServiceClient} from './project/services/player.service.client';
 import {PlayerdetailsComponent} from './project/components/playerdetails/playerdetails.component';
 import {MatchServiceClient} from './project/services/match.service.client';
+import { WidgetHtmlComponent } from './components/widget/widget-edit/widget-html/widget-html.component';
+import { WidgetTextComponent } from './components/widget/widget-edit/widget-text/widget-text.component';
 
 @NgModule({
   // Declare components here
@@ -57,12 +60,15 @@ import {MatchServiceClient} from './project/services/match.service.client';
     WidgetYoutubeComponent,
     PlayersComponent,
     MatchesComponent,
-    PlayerdetailsComponent
+    PlayerdetailsComponent,
+    WidgetHtmlComponent,
+    WidgetTextComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
+    QuillEditorModule,
     Routing
   ],
   // Client Side services here
