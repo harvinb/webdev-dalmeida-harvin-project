@@ -1,0 +1,57 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <p class="navbar-text pull-left">
+      <a [routerLink]="['/user',uId]" class="navbar-link">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </p>
+
+    <!--heading on the nav bar-->
+    <p class="navbar-header pull-left">
+      <a class="navbar-brand thick">
+        <b>Leagues</b>
+      </a>
+    </p>
+
+    <!--tick mark-->
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/user',uId,'league','new']" class="navbar-link">
+        <span class="glyphicon glyphicon-plus"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <ul class="list-group">
+    <li *ngFor="let league of leagueList" class="list-group-item">
+      <div class="row">
+        <div class="col-xs-9 col-sm-6 col-md-3">
+          <a [routerLink]="['/user',uId,'league',league._id,'team']">{{league.name}}</a>
+        </div>
+        <div class="col-md-3 hidden-xs hidden-sm">{{league.owner_id}}</div>
+        <div class="col-md-3">
+          <a [routerLink]="['/user',uId,'website',league._id]" class="pull-right">
+            <span class="glyphicon glyphicon-cog"> </span>
+          </a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/user', uId]" class="navbar-link">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>

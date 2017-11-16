@@ -8,6 +8,7 @@ module.exports = function (app) {
 
   leagues = [
     {_id:'123', name: 'test League 1', owner_id: '123', users_id: ['123','234','456'] },
+    {_id:'555', name: 'test League 3', owner_id: '234', users_id: ['123','234','456','345'] },
     {_id:'333', name: 'test League 2', owner_id: '345', users_id: ['345','234','456'] }
   ];
 
@@ -16,6 +17,7 @@ module.exports = function (app) {
     let league=req.body;
     league._id = Math.random().toString();
     league.owner_id = uId;
+    league.users_id = [uId];
     leagues.push(league);
     res.json(leagues.filter(function (league) {
       return league.owner_id === uId;
@@ -25,7 +27,7 @@ module.exports = function (app) {
   function findAllLeaguesForUser(req,res) {
     var uId = req.params["userId"];
     var leagueList = leagues.filter(function (league) {
-      return league.owner_id === uId;
+      return league.users_id.includes(uId);
     });
     res.json(leagueList);
   }

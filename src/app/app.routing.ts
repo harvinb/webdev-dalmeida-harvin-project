@@ -12,6 +12,9 @@ import {ProfileComponent} from './components/user/profile/profile.component';
 import {PlayersComponent} from './project/components/players/players.component';
 import {PlayerdetailsComponent} from './project/components/playerdetails/playerdetails.component';
 import {MatchesComponent} from './project/components/matches/matches.component';
+import {LeagueListComponent} from './components/league/league-list/league-list.component';
+import {LeagueNewComponent} from './components/league/league-new/league-new.component';
+import {TeamListComponent} from './components/team/team-list/team-list.component';
 
 const APP_ROUTES: Routes = [
   {path: '',                                              component: LoginComponent},
@@ -22,6 +25,9 @@ const APP_ROUTES: Routes = [
   {path: 'login' ,                                        component: LoginComponent},
   {path: 'register' ,                                     component: RegisterComponent},
   {path: 'user/:uid',                                     component: ProfileComponent},
+  {path: 'user/:uid/league',                              component: LeagueListComponent},
+  {path: 'user/:uid/league/new',                          component: LeagueNewComponent},
+  {path: 'user/:uid/league/:lid/team',                    component: TeamListComponent}
 ];
 
 // Export the routes as module providers

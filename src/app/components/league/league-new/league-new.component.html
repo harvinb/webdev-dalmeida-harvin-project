@@ -1,0 +1,83 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row">
+      <div class="col-sm-4 hidden-xs">
+        <p class="navbar-text pull-left">
+          <a [routerLink]="['/user',uId,'league']" class="navbar-link">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+        </p>
+        <!--heading on the nav bar-->
+        <p class="navbar-header pull-left">
+          <a class="navbar-brand thick">
+            <b>Websites</b>
+          </a>
+        </p>
+        <!--plus mark-->
+        <p class="navbar-text pull-right">
+          <a [routerLink]="['/user',uId,'league','new']" class="navbar-link">
+            <span class="glyphicon glyphicon-plus"></span>
+          </a>
+        </p>
+      </div>
+      <div class="col-sm-8">
+        <!--heading on the nav bar-->
+        <p class="navbar-header pull-left">
+          <a class="navbar-brand thick">
+            <b>New League</b>
+          </a>
+        </p>
+        <!--tick mark-->
+        <p class="navbar-text pull-right" id="combinedtick">
+          <button form="ngForm" class="navbar-link" [disabled]="!f.valid">
+            <span class="glyphicon glyphicon-ok"></span>
+          </button>
+        </p>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4 hidden-xs">
+      <ul class="list-group">
+        <li *ngFor="let league of leagues" class="list-group-item">
+          <a [routerLink]="['/user',uId,'league',league._id]">{{league.name}}</a>
+        </li>
+      </ul>
+
+    </div>
+    <div class="col-sm-8">
+
+      <form (ngSubmit) = "createNewLeague()" #f="ngForm" id="ngForm">
+        <div class="form-group">
+          <label for="leaguename">League Name</label>
+          <input type="text"
+                 name="sitename"
+                 class="form-control"
+                 id="leaguename"
+                 ngModel
+                 required
+                 #leagueName="ngModel"
+                 placeholder="Name">
+          <span class="help-block" *ngIf="!leagueName.valid && leagueName.touched">
+            Please enter League Name!
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/user', uId]" class="navbar-link">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>

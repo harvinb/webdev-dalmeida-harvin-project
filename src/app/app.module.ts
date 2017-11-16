@@ -17,6 +17,14 @@ import { MatchesComponent } from './project/components/matches/matches.component
 import {PlayerServiceClient} from './project/services/player.service.client';
 import {PlayerdetailsComponent} from './project/components/playerdetails/playerdetails.component';
 import {MatchServiceClient} from './project/services/match.service.client';
+import { LeagueListComponent } from './components/league/league-list/league-list.component';
+import { LeagueNewComponent } from './components/league/league-new/league-new.component';
+import { LeagueEditComponent } from './components/league/league-edit/league-edit.component';
+import {LeagueService} from './services/league.service.client';
+import { TeamListComponent } from './components/team/team-list/team-list.component';
+import {TeamService} from './services/team.service.client';
+import { TeamNewComponent } from './components/team/team-new/team-new.component';
+import { TeamEditComponent } from './components/team/team-edit/team-edit.component';
 
 @NgModule({
   // Declare components here
@@ -30,6 +38,12 @@ import {MatchServiceClient} from './project/services/match.service.client';
     PlayersComponent,
     MatchesComponent,
     PlayerdetailsComponent,
+    LeagueListComponent,
+    LeagueNewComponent,
+    LeagueEditComponent,
+    TeamListComponent,
+    TeamNewComponent,
+    TeamEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +52,7 @@ import {MatchServiceClient} from './project/services/match.service.client';
     Routing
   ],
   // Client Side services here
-  providers: [UserService, PlayerServiceClient, MatchServiceClient],
+  providers: [UserService, LeagueService, TeamService, PlayerServiceClient, MatchServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
