@@ -12,11 +12,11 @@ import { ProfileComponent } from './components/user/profile/profile.component';
 import { RegisterComponent } from './components/user/register/register.component';
 
 import {UserService} from './services/user.service.client';
-import { PlayersComponent } from './project/components/players/players.component';
-import { MatchesComponent } from './project/components/matches/matches.component';
-import {PlayerServiceClient} from './project/services/player.service.client';
-import {PlayerdetailsComponent} from './project/components/playerdetails/playerdetails.component';
-import {MatchServiceClient} from './project/services/match.service.client';
+import { PlayersComponent } from './components/players/players.component';
+import { MatchesComponent } from './components/matches/matches.component';
+import {PlayerServiceClient} from './services/player.service.client';
+import {PlayerdetailsComponent} from './components/playerdetails/playerdetails.component';
+import {MatchServiceClient} from './services/match.service.client';
 import { LeagueListComponent } from './components/league/league-list/league-list.component';
 import { LeagueNewComponent } from './components/league/league-new/league-new.component';
 import { LeagueEditComponent } from './components/league/league-edit/league-edit.component';

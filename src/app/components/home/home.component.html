@@ -1,19 +1,41 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
 
-<div class="container">
+    <!--heading on the nav bar-->
+    <p class="navbar-header pull-left">
+      <a class="navbar-brand thick">
+        <b>Homepage</b>
+      </a>
+    </p>
 
-  <h1>
-    Angular 4 MEAN stack app
-  </h1>
+    <p class="navbar-header pull-left">
+      <a [routerLink]="['/login']" class="navbar-brand">
+        <b>Login</b>
+      </a>
+    </p>
 
+    <p class="navbar-header pull-left">
+      <a [routerLink]="['/login']" class="navbar-brand">
+        <b>Leagues</b>
+      </a>
+    </p>
 
-  <h3>
-    App works
-  </h3>
+    <p class="navbar-header pull-left">
+      <a [routerLink]="['/login']" class="navbar-brand">
+        <b>Matches</b>
+      </a>
+    </p>
 
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/user', pUserId]" class="navbar-link">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
 
-  <h4>
-    <a href="test">Test MongoDB</a>
-  </h4>
+  </div>
+</nav>
 
-</div>
+<div class="container-fluid">
+  <ul>
+
 

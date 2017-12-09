@@ -9,15 +9,15 @@ import {TestComponent} from './components/test/test.component';
 import {LoginComponent} from './components/user/login/login.component';
 import {RegisterComponent} from './components/user/register/register.component';
 import {ProfileComponent} from './components/user/profile/profile.component';
-import {PlayersComponent} from './project/components/players/players.component';
-import {PlayerdetailsComponent} from './project/components/playerdetails/playerdetails.component';
-import {MatchesComponent} from './project/components/matches/matches.component';
+import {PlayersComponent} from './components/players/players.component';
+import {PlayerdetailsComponent} from './components/playerdetails/playerdetails.component';
+import {MatchesComponent} from './components/matches/matches.component';
 import {LeagueListComponent} from './components/league/league-list/league-list.component';
 import {LeagueNewComponent} from './components/league/league-new/league-new.component';
 import {TeamListComponent} from './components/team/team-list/team-list.component';
 
 const APP_ROUTES: Routes = [
-  {path: '',                                              component: LoginComponent},
+  {path: '',                                              component: HomeComponent},
   {path: 'project/players',                               component: PlayersComponent},
   {path: 'project/players/:playerid',                     component: PlayerdetailsComponent},
   {path: 'project/matches/:teamid',                       component: MatchesComponent},
