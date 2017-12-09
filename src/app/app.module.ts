@@ -25,6 +25,7 @@ import { TeamListComponent } from './components/team/team-list/team-list.compone
 import {TeamService} from './services/team.service.client';
 import { TeamNewComponent } from './components/team/team-new/team-new.component';
 import { TeamEditComponent } from './components/team/team-edit/team-edit.component';
+import { HomeLeagueComponent } from './components/home/home-league/home-league.component';
 
 @NgModule({
   // Declare components here
@@ -44,6 +45,7 @@ import { TeamEditComponent } from './components/team/team-edit/team-edit.compone
     TeamListComponent,
     TeamNewComponent,
     TeamEditComponent,
+    HomeLeagueComponent,
   ],
   imports: [
     BrowserModule,

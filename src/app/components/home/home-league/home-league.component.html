@@ -1,0 +1,53 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <p class="navbar-header pull-left">
+      <a class="navbar-brand thick">
+        <b>Homepage</b>
+      </a>
+    </p>
+
+    <p class="navbar-header pull-left">
+      <a [routerLink]="['/login']" class="navbar-brand">
+        <b>Login</b>
+      </a>
+    </p>
+
+    <p class="navbar-header pull-left">
+      <a [routerLink]="['/leagues']" class="navbar-brand">
+        <b>Leagues</b>
+      </a>
+    </p>
+
+    <p class="navbar-header pull-left">
+      <a [routerLink]="['/login']" class="navbar-brand">
+        <b>Matches</b>
+      </a>
+    </p>
+
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/user', pUserId]" class="navbar-link">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <ul class="list-group">
+    <li *ngFor="let league of leagueList" class="list-group-item">
+      <div class="row">
+        <div class="col-xs-9 col-sm-6 col-md-3">
+          <a [routerLink]="['/user',uId,'league',league._id,'team']">{{league.name}}</a>
+        </div>
+        <div class="col-md-3 hidden-xs hidden-sm">{{league.users_id.length}}</div>
+        <div class="col-md-3 hidden-xs col-sm-3">{{findLeagueOwner(league.owner_id)}}</div>
+        <div class="col-md-3 col-sm-3 col-xs-3">
+          <a [routerLink]="['/user',uId,'website',league._id]" class="pull-right">Join</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

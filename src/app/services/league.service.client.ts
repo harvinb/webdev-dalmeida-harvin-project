@@ -17,7 +17,8 @@ export class LeagueService {
     'findAllLeaguesForUser' : this.findAllLeaguesForUser,
     'findLeagueById' : this.findLeagueById,
     'updateLeague' : this.updateLeague,
-    'deleteLeague' : this.deleteLeague
+    'deleteLeague' : this.deleteLeague,
+    'getAllLeagues' : this.getAllLeagues
   };
 
   createLeague(userId: string, leaguename: League) {
@@ -29,6 +30,13 @@ export class LeagueService {
       .map((response: Response) => {
         return response.json();
       });
+  }
+
+  getAllLeagues() {
+    return this.http.get(this.baseUrl + '/api/league').
+      map((res: Response) => {
+      return res.json();
+    });
   }
 
   findAllLeaguesForUser(userId: string) {

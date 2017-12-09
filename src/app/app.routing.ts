@@ -15,9 +15,11 @@ import {MatchesComponent} from './components/matches/matches.component';
 import {LeagueListComponent} from './components/league/league-list/league-list.component';
 import {LeagueNewComponent} from './components/league/league-new/league-new.component';
 import {TeamListComponent} from './components/team/team-list/team-list.component';
+import {HomeLeagueComponent} from './components/home/home-league/home-league.component';
 
 const APP_ROUTES: Routes = [
-  {path: '',                                              component: HomeComponent},
+  {path: '',                                              component: HomeLeagueComponent},
+  {path: 'leagues',                                       component: HomeLeagueComponent},
   {path: 'project/players',                               component: PlayersComponent},
   {path: 'project/players/:playerid',                     component: PlayerdetailsComponent},
   {path: 'project/matches/:teamid',                       component: MatchesComponent},

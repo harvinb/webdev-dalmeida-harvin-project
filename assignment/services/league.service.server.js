@@ -5,6 +5,7 @@ module.exports = function (app) {
   app.get("/api/league/:leagueId", findLeagueById);
   app.put("/api/league/:leagueId", updateLeague);
   app.delete("/api/league/:leagueId", deleteLeague);
+  app.get("/api/league",getAllLeagues);
 
   leagues = [
     {_id:'123', name: 'test League 1', owner_id: '123', users_id: ['123','234','456'] },
@@ -22,6 +23,10 @@ module.exports = function (app) {
     res.json(leagues.filter(function (league) {
       return league.owner_id === uId;
     }));
+  }
+
+  function getAllLeagues(req,res) {
+    res.json(leagues);
   }
 
   function findAllLeaguesForUser(req,res) {
