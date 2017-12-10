@@ -40,7 +40,7 @@
     <li *ngFor="let league of leagueList" class="list-group-item">
       <div class="row">
         <div class="col-xs-9 col-sm-6 col-md-3">
-          <a [routerLink]="['/leagues',league._id,'team']">{{league.name}}</a>
+          <a [routerLink]="['/leagues',league._id,'teams']">{{league.name}}</a>
         </div>
         <div class="col-md-3 hidden-xs hidden-sm">Users : {{league.users_id.length}}</div>
         <div class="col-md-3 hidden-xs col-sm-3">{{findLeagueOwner(league.owner_id)}}</div>

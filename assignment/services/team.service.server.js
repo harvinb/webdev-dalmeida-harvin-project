@@ -1,11 +1,14 @@
 module.exports = function (app) {
 
+  var teamModel = require("../model/team/team.model.server");
+
   app.post("/api/user/:userId/league/:leagueId/team", createTeam);
   app.get("/api/league/:leagueId/team",findAllTeamsForLeague);
   app.get("/api/team/:teamId", findTeamById);
   app.put("/api/team/:teamId", updateTeam);
   app.delete("/api/team/:teamId", deleteTeam);
 
+  /*
   teams = [
     { _id: "321", name: "Team 1", leagueId: "123", userId: "123" ,
       ppList: ["105248644", "82262664", "111620041", "113457795", "87276347"]},
@@ -16,47 +19,52 @@ module.exports = function (app) {
     { _id: "666", name: "Team 4", leagueId: "333", userId: "456" ,
       ppList: ["70388657", "94155156", "26771994", "101356886", "82262664"]}
   ];
+  */
 
   function createTeam(req,res) {
     var team=req.body;
-    team._id = Math.random().toString();
     team.leagueId = req.params["leagueId"];
     team.userId = req.params["userId"];
-    teams.push(team);
-    res.json(teams);
+    teamModel.createLeagueForUser(team).
+    then(function (newteam) {
+      res.json(newteam);
+    });
   }
 
   function findAllTeamsForLeague(req,res) {
     var lId = req.params["leagueId"];
-    var teamList = teams.filter(function (teamList) {
-      return teamList.leagueId === lId;
-    });
-    res.json(teamList);
+    teamModel
+      .findAllTeamsForLeague(lId)
+      .then(function (teams) {
+        res.json(teams);
+      });
   }
 
   function findTeamById(req,res) {
     var tId = req.params["teamId"];
-    var team=teams.find(function (team) {
-      return team._id === tId;
-    });
-    res.json(team);
+    teamModel
+      .findTeamById(tId)
+      .then(function (team) {
+        res.json(team);
+      });
   }
 
   function updateTeam(req,res){
     var team=req.body;
     var tId = req.params["teamId"];
-    if (tId) {
-      teams[teams.findIndex(x => x._id === tId)]=team;
-    }
-    res.json(teams);
-    //res.json(users);
+    teamModel
+      .updateTeam(tId,team)
+      .then(function (status) {
+        res.json(status);
+      });
   }
 
   function deleteTeam(req,res){
     var tId = req.params["teamId"];
-    if (tId) {
-      teams.splice(teams.findIndex(x => x._id === tId),1);
-    }
-    res.json(teams);
+    teamModel
+      .deleteTeam(tId)
+      .then(function (status) {
+        res.json(status);
+      });
   }
 };

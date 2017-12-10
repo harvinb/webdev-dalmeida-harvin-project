@@ -23,7 +23,6 @@ export class HomeLeagueComponent implements OnInit {
         for (let league of this.leagueList) {
           console.log(league.owner_id);
           this.getLeagueOwner(league.owner_id);
-
         }
       });
   }

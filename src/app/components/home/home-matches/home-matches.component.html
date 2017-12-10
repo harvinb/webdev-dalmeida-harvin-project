@@ -1,3 +1,58 @@
-<p>
-  home-matches works!
-</p>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!--heading on the nav bar-->
+    <p class="navbar-header pull-left">
+      <a class="navbar-brand thick">
+        <b>Homepage</b>
+      </a>
+    </p>
+
+    <p class="navbar-header pull-left">
+      <a [routerLink]="['/login']" class="navbar-brand">
+        <b>Login</b>
+      </a>
+    </p>
+
+    <p class="navbar-header pull-left">
+      <a [routerLink]="['/leagues']" class="navbar-brand">
+        <b>Leagues</b>
+      </a>
+    </p>
+
+    <p class="navbar-header pull-left">
+      <a [routerLink]="['/matches']" class="navbar-brand">
+        <b>Matches</b>
+      </a>
+    </p>
+
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/user', pUserId]" class="navbar-link">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <ul class="list-group">
+    <li *ngFor="let match of matches" class="list-group-item">
+      <div class="row">
+        <div class="col-xs-9 col-sm-6 col-md-4">
+          {{match.radiant_name}} <b>VS</b> {{match.dire_name}}
+        </div>
+        <div class="col-md-4 hidden-xs hidden-sm">
+          Tournament : {{match.league_name}}
+        </div>
+        <div class="col-md-4 col-xs-3 col-sm-6">
+          Winner:
+          <b *ngIf="( match.radiant_win ); else loss">{{match.radiant_name}}</b>
+          <ng-template #loss>
+            <b>{{match.dire_name}}</b>
+          </ng-template>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

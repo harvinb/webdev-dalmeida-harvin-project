@@ -29,6 +29,8 @@ import { HomeLeagueComponent } from './components/home/home-league/home-league.c
 import { HomeTeamComponent } from './components/home/home-team/home-team.component';
 import { HomeTeamDetailsComponent } from './components/home/home-team-details/home-team-details.component';
 import { HomeMatchesComponent } from './components/home/home-matches/home-matches.component';
+import {SharedService} from './services/shared.service';
+import {AuthGuard} from './services/auth-guard.service';
 
 @NgModule({
   // Declare components here
@@ -60,7 +62,8 @@ import { HomeMatchesComponent } from './components/home/home-matches/home-matche
     Routing
   ],
   // Client Side services here
-  providers: [UserService, LeagueService, TeamService, PlayerServiceClient, MatchServiceClient],
+  providers: [UserService, LeagueService, TeamService, PlayerServiceClient, MatchServiceClient,
+              SharedService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

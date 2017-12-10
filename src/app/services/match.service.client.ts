@@ -19,4 +19,13 @@ export class MatchServiceClient {
         return response.json();
       });
   }
+
+  getAllMatches() {
+    const url = openDotaApi + 'proMatches';
+
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
 }

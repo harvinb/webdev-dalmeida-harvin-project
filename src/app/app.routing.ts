@@ -19,6 +19,7 @@ import {HomeLeagueComponent} from './components/home/home-league/home-league.com
 import {HomeTeamComponent} from './components/home/home-team/home-team.component';
 import {HomeTeamDetailsComponent} from './components/home/home-team-details/home-team-details.component';
 import {HomeMatchesComponent} from './components/home/home-matches/home-matches.component';
+import {AuthGuard} from './services/auth-guard.service';
 
 const APP_ROUTES: Routes = [
   {path: '',                                              component: HomeLeagueComponent},
@@ -32,7 +33,7 @@ const APP_ROUTES: Routes = [
   {path: 'default',                                       component: LoginComponent},
   {path: 'login' ,                                        component: LoginComponent},
   {path: 'register' ,                                     component: RegisterComponent},
-  {path: 'user/:uid',                                     component: ProfileComponent},
+  {path: 'user/:uid',                                     component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'user/:uid/league',                              component: LeagueListComponent},
   {path: 'user/:uid/league/new',                          component: LeagueNewComponent},
   {path: 'user/:uid/league/:lid/team',                    component: TeamListComponent}
