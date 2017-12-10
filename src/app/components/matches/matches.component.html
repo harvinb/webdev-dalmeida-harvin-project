@@ -8,7 +8,7 @@
     Tournament : {{match.league_name}}
 
     Result:
-    <b *ngIf="(match.radiant === true && match.radiant_win === true); else loss">win</b>
+    <b *ngIf="( !(match.radiant ? !match.radiant_win : match.radiant_win) ); else loss">win</b>
     <ng-template #loss>
       <b>loss</b>
     </ng-template>

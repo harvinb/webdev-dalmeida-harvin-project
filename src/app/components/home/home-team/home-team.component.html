@@ -21,7 +21,7 @@
     </p>
 
     <p class="navbar-header pull-left">
-      <a [routerLink]="['/matches']" class="navbar-brand">
+      <a [routerLink]="['/login']" class="navbar-brand">
         <b>Matches</b>
       </a>
     </p>
@@ -37,16 +37,13 @@
 
 <div class="container-fluid">
   <ul class="list-group">
-    <li *ngFor="let league of leagueList" class="list-group-item">
+    <li *ngFor="let team of teamList" class="list-group-item">
       <div class="row">
-        <div class="col-xs-9 col-sm-6 col-md-3">
-          <a [routerLink]="['/leagues',league._id,'team']">{{league.name}}</a>
+        <div class="col-xs-9 col-sm-6 col-md-4">
+          <a [routerLink]="['/team',team._id]">{{team.name}}</a>
         </div>
-        <div class="col-md-3 hidden-xs hidden-sm">Users : {{league.users_id.length}}</div>
-        <div class="col-md-3 hidden-xs col-sm-3">{{findLeagueOwner(league.owner_id)}}</div>
-        <div class="col-md-3 col-sm-3 col-xs-3">
-          <a [routerLink]="['/user',uId,'website',league._id]" class="pull-right">Join</a>
-        </div>
+        <div class="col-md-4 hidden-xs hidden-sm">Owner: {{findTeamOwner(team.userId)}}</div>
+        <div class="col-md-4">Points?</div>
       </div>
     </li>
   </ul>

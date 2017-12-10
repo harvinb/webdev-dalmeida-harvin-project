@@ -7,10 +7,14 @@ module.exports = function (app) {
   app.delete("/api/team/:teamId", deleteTeam);
 
   teams = [
-    { _id: "321", name: "Team 1", leagueId: "123", userId: "123" },
-    { _id: "432", name: "Team 2", leagueId: "333", userId: "345" },
-    { _id: "543", name: "Team 3", leagueId: "123", userId: "456" },
-    { _id: "666", name: "Team 4", leagueId: "333", userId: "456" }
+    { _id: "321", name: "Team 1", leagueId: "123", userId: "123" ,
+      ppList: ["105248644", "82262664", "111620041", "113457795", "87276347"]},
+    { _id: "432", name: "Team 2", leagueId: "333", userId: "345" ,
+      ppList: ["101356886", "149486894", "86727555", "113457795", "87276347"]},
+    { _id: "543", name: "Team 3", leagueId: "123", userId: "456" ,
+      ppList: ["82262664", "149486894", "86727555", "101356886", "105248644"]},
+    { _id: "666", name: "Team 4", leagueId: "333", userId: "456" ,
+      ppList: ["70388657", "94155156", "26771994", "101356886", "82262664"]}
   ];
 
   function createTeam(req,res) {

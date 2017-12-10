@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import 'rxjs/Rx';
+import {Match} from '../models/players/match.model.client';
 
 
 const openDotaApi = 'https://api.opendota.com/api/';
@@ -18,6 +19,4 @@ export class MatchServiceClient {
         return response.json();
       });
   }
-
-
 }

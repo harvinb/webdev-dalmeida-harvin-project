@@ -26,6 +26,9 @@ import {TeamService} from './services/team.service.client';
 import { TeamNewComponent } from './components/team/team-new/team-new.component';
 import { TeamEditComponent } from './components/team/team-edit/team-edit.component';
 import { HomeLeagueComponent } from './components/home/home-league/home-league.component';
+import { HomeTeamComponent } from './components/home/home-team/home-team.component';
+import { HomeTeamDetailsComponent } from './components/home/home-team-details/home-team-details.component';
+import { HomeMatchesComponent } from './components/home/home-matches/home-matches.component';
 
 @NgModule({
   // Declare components here
@@ -46,6 +49,9 @@ import { HomeLeagueComponent } from './components/home/home-league/home-league.c
     TeamNewComponent,
     TeamEditComponent,
     HomeLeagueComponent,
+    HomeTeamComponent,
+    HomeTeamDetailsComponent,
+    HomeMatchesComponent
   ],
   imports: [
     BrowserModule,

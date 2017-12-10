@@ -21,7 +21,7 @@
     </p>
 
     <p class="navbar-header pull-left">
-      <a [routerLink]="['/matches']" class="navbar-brand">
+      <a [routerLink]="['/login']" class="navbar-brand">
         <b>Matches</b>
       </a>
     </p>
@@ -35,19 +35,25 @@
   </div>
 </nav>
 
+<div class="h1">{{team.name}}</div>
+<div class="h2">Owner: {{user.username}}</div>
+
+<div class="h2">Players</div>
 <div class="container-fluid">
   <ul class="list-group">
-    <li *ngFor="let league of leagueList" class="list-group-item">
+    <li *ngFor="let player of proPlayerList" class="list-group-item">
       <div class="row">
-        <div class="col-xs-9 col-sm-6 col-md-3">
-          <a [routerLink]="['/leagues',league._id,'team']">{{league.name}}</a>
+        <div class="col-xs-9 col-sm-6 col-md-4">
+          <a [routerLink]="['/project','players',player.account_id]">{{player.name}}</a>
         </div>
-        <div class="col-md-3 hidden-xs hidden-sm">Users : {{league.users_id.length}}</div>
-        <div class="col-md-3 hidden-xs col-sm-3">{{findLeagueOwner(league.owner_id)}}</div>
-        <div class="col-md-3 col-sm-3 col-xs-3">
-          <a [routerLink]="['/user',uId,'website',league._id]" class="pull-right">Join</a>
+        <div class="col-md-4">Points: {{player.fantasy_role}}</div>
+        <div class="col-md-4">
+          <button class="btn-block btn-primary">Change</button>
         </div>
       </div>
     </li>
   </ul>
 </div>
+
+<div class="h2">Total Points: {{totalPoints}}</div>
+<div class="h2">Comments </div>
