@@ -33,7 +33,7 @@
     </p>
 
     <!--tick mark-->
-    <p class="navbar-text pull-right" *ngIf="isLoggedin">
+    <p class="navbar-text pull-right" *ngIf="isLoggedin && !isTeamOwner()">
       <a [routerLink]="['/leagues',lId,'teams','new']" class="navbar-link">
         <span class="glyphicon glyphicon-plus"></span>
       </a>
@@ -51,7 +51,11 @@
         </div>
         <div class="col-md-4 hidden-xs hidden-sm">Owner: {{team.userId.username}}</div>
         <!-- <div class="col-md-4">Points?</div> -->
-        <div class="col-md-4">Edit cog</div>
+        <div class="col-md-3 col-xs-4 col-sm-4" *ngIf="isLoggedin && isTeamOwnerCog(team.userId._id)">
+          <a [routerLink]="['/leagues',lId,'team',team._id,'edit']" class="pull-right">
+            <span class="glyphicon glyphicon-cog"> </span>
+          </a>
+        </div>
       </div>
     </li>
   </ul>

@@ -46,6 +46,22 @@ export class HomeTeamComponent implements OnInit {
     });
   }
 
+  isTeamOwner() {
+    if (this.teamList.map(x => x.userId._id).indexOf(this.user._id) !== -1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isTeamOwnerCog(uid: string) {
+    if (uid === this.user._id) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   getTeamOwner(id: string) {
     this.userService.findUserById(id).
     subscribe((user: User) => {

@@ -22,6 +22,7 @@ import {HomeMatchesComponent} from './components/home/home-matches/home-matches.
 import {AuthGuard} from './services/auth-guard.service';
 import {LeagueEditComponent} from './components/league/league-edit/league-edit.component';
 import {TeamNewComponent} from './components/team/team-new/team-new.component';
+import {TeamEditComponent} from './components/team/team-edit/team-edit.component';
 
 const APP_ROUTES: Routes = [
   {path: '',                                              component: HomeLeagueComponent},
@@ -43,6 +44,7 @@ const APP_ROUTES: Routes = [
   {path: 'user/:uid/league/:lid/team',                    component: TeamListComponent},
   {path: 'user/:uid/league/:lid/ppsearch',                component: PlayersComponent},
   {path: 'leagues/:lid/team/:tid/ppool',                  component: PlayersComponent},
+  {path: 'leagues/:lid/team/:tid/edit',                   component: TeamEditComponent},
 ];
 
 // Export the routes as module providers
