@@ -31,6 +31,8 @@ import { HomeTeamDetailsComponent } from './components/home/home-team-details/ho
 import { HomeMatchesComponent } from './components/home/home-matches/home-matches.component';
 import {SharedService} from './services/shared.service';
 import {AuthGuard} from './services/auth-guard.service';
+import { AdminLeagueListComponent } from './components/league/admin-league-list/admin-league-list.component';
+import {AdminServiceClient} from './services/admin.service.client';
 
 @NgModule({
   // Declare components here
@@ -53,7 +55,8 @@ import {AuthGuard} from './services/auth-guard.service';
     HomeLeagueComponent,
     HomeTeamComponent,
     HomeTeamDetailsComponent,
-    HomeMatchesComponent
+    HomeMatchesComponent,
+    AdminLeagueListComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,7 @@ import {AuthGuard} from './services/auth-guard.service';
   ],
   // Client Side services here
   providers: [UserService, LeagueService, TeamService, PlayerServiceClient, MatchServiceClient,
-              SharedService, AuthGuard],
+              SharedService, AuthGuard, AdminServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

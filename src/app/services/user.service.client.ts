@@ -25,7 +25,8 @@ export class UserService {
     'updateUser' : this.updateUser,
     'deleteUser' : this.deleteUser,
     'login' : this.login,
-    'register' : this.register
+    'register' : this.register,
+    'googleLogin': this.googleLogin
   };
 
   loggedIn() {
@@ -137,4 +138,40 @@ export class UserService {
         return response.json();
       });
   }
+
+  findAllUsers() {
+    const url = this.baseUrl + '/api/admin/user';
+    this.options.withCredentials = true;
+    return this.http.get(url, this.options)
+      .map((res: Response) => {
+        return res.json();
+      });
+  }
+
+  isAdmin() {
+    const url = this.baseUrl + '/api/admin/isAdmin';
+    this.options.withCredentials = true;
+    return this.http.get(url, this.options)
+      .map((res: Response) => {
+        const user = res.json();
+        if (user !== 0) {
+          this.sharedService.user = user; return true;
+        } else {
+          this.router.navigate(['/login']); return false;
+        }
+      });
+  }
+
+  googleLogin() {
+    console.log(this.baseUrl + '/google/login');
+    return this.http.get(this.baseUrl + '/google/login')
+      .map(
+        (res: Response) => {
+          const data = res.json();
+          return data;
+        }
+      );
+  }
+
+
 }

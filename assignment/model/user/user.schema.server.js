@@ -6,10 +6,13 @@ var UserSchema = mongoose.Schema ({
   firstName: String,
   lastName: String,
   email: String,
-  phone: String,
-  // websites: [Website],
-  dateCreated: Date
-
+  roles: [{type: String,
+    default: 'USER',
+    enum: ['ADMIN', 'USER']}],
+  google: {
+    id: String,
+    token: String
+  }
 }, {collection: 'user'});
 
 module.exports = UserSchema;

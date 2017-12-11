@@ -23,28 +23,31 @@ import {AuthGuard} from './services/auth-guard.service';
 import {LeagueEditComponent} from './components/league/league-edit/league-edit.component';
 import {TeamNewComponent} from './components/team/team-new/team-new.component';
 import {TeamEditComponent} from './components/team/team-edit/team-edit.component';
+import {AdminLeagueListComponent} from './components/league/admin-league-list/admin-league-list.component';
+import {AdminServiceClient} from './services/admin.service.client';
 
 const APP_ROUTES: Routes = [
-  {path: '',                                              component: HomeLeagueComponent},
-  {path: 'leagues',                                       component: HomeLeagueComponent},
-  {path: 'leagues/:lid',                                  component: LeagueEditComponent},
-  {path: 'leagues/:lid/teams',                            component: HomeTeamComponent},
-  {path: 'matches',                                       component: HomeMatchesComponent},
-  {path: 'team/:tid',                                     component: HomeTeamDetailsComponent},
-  {path: 'project/players',                               component: PlayersComponent},
-  {path: 'project/players/:playerid',                     component: PlayerdetailsComponent},
-  {path: 'project/matches/:teamid',                       component: MatchesComponent},
-  {path: 'default',                                       component: LoginComponent},
-  {path: 'login' ,                                        component: LoginComponent},
-  {path: 'register' ,                                     component: RegisterComponent},
-  {path: 'user/:uid',                                     component: ProfileComponent, canActivate: [AuthGuard]},
-  {path: 'user/:uid/league',                              component: LeagueListComponent},
-  {path: 'league/new',                                    component: LeagueNewComponent},
-  {path: 'leagues/:lid/teams/new',                        component: TeamNewComponent},
-  {path: 'user/:uid/league/:lid/team',                    component: TeamListComponent},
-  {path: 'user/:uid/league/:lid/ppsearch',                component: PlayersComponent},
-  {path: 'leagues/:lid/team/:tid/ppool',                  component: PlayersComponent},
-  {path: 'leagues/:lid/team/:tid/edit',                   component: TeamEditComponent},
+  {path: '',                                  component: HomeLeagueComponent},
+  {path: 'leagues',                           component: HomeLeagueComponent},
+  {path: 'leagues/:lid',                      component: LeagueEditComponent},
+  {path: 'leagues/:lid/teams',                component: HomeTeamComponent},
+  {path: 'matches',                           component: HomeMatchesComponent},
+  {path: 'team/:tid',                         component: HomeTeamDetailsComponent},
+  {path: 'project/players',                   component: PlayersComponent},
+  {path: 'project/players/:playerid',         component: PlayerdetailsComponent},
+  {path: 'project/matches/:teamid',           component: MatchesComponent},
+  {path: 'default',                           component: LoginComponent},
+  {path: 'login' ,                            component: LoginComponent},
+  {path: 'register' ,                         component: RegisterComponent},
+  {path: 'user/:uid',                         component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: 'user/:uid/league',                  component: LeagueListComponent},
+  {path: 'league/new',                        component: LeagueNewComponent},
+  {path: 'leagues/:lid/teams/new',            component: TeamNewComponent},
+  {path: 'user/:uid/league/:lid/team',        component: TeamListComponent},
+  {path: 'user/:uid/league/:lid/ppsearch',    component: PlayersComponent},
+  {path: 'leagues/:lid/team/:tid/ppool',      component: PlayersComponent},
+  {path: 'leagues/:lid/team/:tid/edit',       component: TeamEditComponent},
+  {path: 'admin/league',                      component: AdminLeagueListComponent, canActivate: [AdminServiceClient]},
 ];
 
 // Export the routes as module providers

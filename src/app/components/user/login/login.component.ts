@@ -43,6 +43,13 @@ export class LoginComponent implements OnInit {
 
   }
 
+  googleLoginbtn() {
+    this.userService.googleLogin().
+    subscribe((response: Response) => {
+      console.log(response);
+    });
+  }
+
   ngOnInit() {
   }
 

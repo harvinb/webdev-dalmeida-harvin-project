@@ -10,6 +10,8 @@ UserModel.findUserByCredentials = findUserByCredentials;
 UserModel.findUserByUsername = findUserByUsername;
 UserModel.updateUser = updateUser;
 UserModel.deleteUser = deleteUser;
+UserModel.findUserByGoogleId = findUserByGoogleId;
+
 module.exports = UserModel;
 
 function findUserByCredentials(username, password) {
@@ -17,7 +19,16 @@ function findUserByCredentials(username, password) {
 }
 
 function createUser(user) {
+  user.roles = ['USER'];
+  console.log(user.username);
+  if (user.username.toString().trim() === 'ADMIN') {
+    user.roles = ['ADMIN'];
+  }
   return UserModel.create(user);
+}
+
+function findUserByGoogleId(googleId) {
+  return UserModel.findOne({'google.id': googleId});
 }
 
 function findAllUsers() {

@@ -92,8 +92,14 @@
   <a class="btn btn-primary btn-block"
      [routerLink]="['/leagues']">Leagues</a>
   <a class="btn btn-danger btn-block "
-     [routerLink]="['/login']" >Logout</a>
+     (click)="logout()" >Logout</a>
 
+</div>
+
+<div class="container-fluid">
+<a href="admin/league" [hidden]="pUser.roles.indexOf('ADMIN') === -1">
+  League Management
+</a>
 </div>
 
 <!-- Footer -->
