@@ -29,7 +29,8 @@ import {AdminServiceClient} from './services/admin.service.client';
 const APP_ROUTES: Routes = [
   {path: '',                                  component: HomeLeagueComponent},
   {path: 'leagues',                           component: HomeLeagueComponent},
-  {path: 'leagues/:lid',                      component: LeagueEditComponent},
+  {path: 'home',                               component: HomeComponent},
+  {path: 'leagues/:lid',                      component: LeagueEditComponent, canActivate: [AuthGuard]},
   {path: 'leagues/:lid/teams',                component: HomeTeamComponent},
   {path: 'matches',                           component: HomeMatchesComponent},
   {path: 'team/:tid',                         component: HomeTeamDetailsComponent},
