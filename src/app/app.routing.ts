@@ -25,11 +25,12 @@ import {TeamNewComponent} from './components/team/team-new/team-new.component';
 import {TeamEditComponent} from './components/team/team-edit/team-edit.component';
 import {AdminLeagueListComponent} from './components/league/admin-league-list/admin-league-list.component';
 import {AdminServiceClient} from './services/admin.service.client';
+import {AdminUserCrudComponent} from './components/user/admin-user-crud/admin-user-crud.component';
 
 const APP_ROUTES: Routes = [
   {path: '',                                  component: HomeLeagueComponent},
   {path: 'leagues',                           component: HomeLeagueComponent},
-  {path: 'home',                               component: HomeComponent},
+  {path: 'home',                              component: HomeComponent},
   {path: 'leagues/:lid',                      component: LeagueEditComponent, canActivate: [AuthGuard]},
   {path: 'leagues/:lid/teams',                component: HomeTeamComponent},
   {path: 'matches',                           component: HomeMatchesComponent},
@@ -40,15 +41,14 @@ const APP_ROUTES: Routes = [
   {path: 'default',                           component: LoginComponent},
   {path: 'login' ,                            component: LoginComponent},
   {path: 'register' ,                         component: RegisterComponent},
-  {path: 'user/:uid',                         component: ProfileComponent, canActivate: [AuthGuard]},
-  {path: 'user/:uid/league',                  component: LeagueListComponent},
-  {path: 'league/new',                        component: LeagueNewComponent},
-  {path: 'leagues/:lid/teams/new',            component: TeamNewComponent},
-  {path: 'user/:uid/league/:lid/team',        component: TeamListComponent},
-  {path: 'user/:uid/league/:lid/ppsearch',    component: PlayersComponent},
-  {path: 'leagues/:lid/team/:tid/ppool',      component: PlayersComponent},
-  {path: 'leagues/:lid/team/:tid/edit',       component: TeamEditComponent},
+  {path: 'profile',                           component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: 'league/new',                        component: LeagueNewComponent, canActivate: [AuthGuard]},
+  {path: 'leagues/:lid/teams/new',            component: TeamNewComponent, canActivate: [AuthGuard]},
+  {path: 'leagues/:lid/ppsearch',             component: PlayersComponent, canActivate: [AuthGuard]},
+  {path: 'leagues/:lid/team/:tid/ppool',      component: PlayersComponent, canActivate: [AuthGuard]},
+  {path: 'leagues/:lid/team/:tid/edit',       component: TeamEditComponent, canActivate: [AuthGuard]},
   {path: 'admin/league',                      component: AdminLeagueListComponent, canActivate: [AdminServiceClient]},
+  {path: 'admin/user',                        component: AdminUserCrudComponent, canActivate: [AdminServiceClient]},
 ];
 
 // Export the routes as module providers

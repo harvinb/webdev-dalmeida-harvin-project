@@ -3,6 +3,7 @@ import {UserService} from '../../../services/user.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {User} from '../../../models/user/user.model.client';
+import {SharedService} from '../../../services/shared.service';
 
 @Component({
   selector: 'app-profile',
@@ -19,11 +20,12 @@ export class ProfileComponent implements OnInit {
 
   constructor(private userService: UserService,
               private router: Router,
+              private sharedService: SharedService,
               private route: ActivatedRoute) { }
 
   profileupdate() {
 
-    this.userService.findUserByUsername(this.pUser.username).
+    this.userService.findUserById(this.pUser.username).
     subscribe((user: User) => {
       if (user && (user._id !== this.pUserId) ) {
         this.errorMsg = 'Username is already taken';
@@ -44,20 +46,16 @@ export class ProfileComponent implements OnInit {
   logout() {
     this.userService.logout()
       .subscribe(
-        (data: any) => this.router.navigate([''])
+        (data: any) => {this.router.navigate(['']);
+          this.sharedService.user = null;}
       );
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.pUserId = params['uid'];
-      this.userService.findUserById(this.pUserId)
-        .subscribe((user: User) => {
-          this.pUser = user;
-          console.log(user);
-
-        });
-    });
+    this.pUser = this.sharedService.user || null;
+    if (this.pUser) {
+      this.pUserId = this.pUser._id;
+    }
     // console.log(this.pUser);
   }
 

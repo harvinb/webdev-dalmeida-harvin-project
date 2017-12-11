@@ -102,6 +102,12 @@
 </a>
 </div>
 
+<div class="container-fluid">
+  <a href="admin/user" [hidden]="pUser.roles.indexOf('ADMIN') === -1">
+    User Management
+  </a>
+</div>
+
 <!-- Footer -->
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">

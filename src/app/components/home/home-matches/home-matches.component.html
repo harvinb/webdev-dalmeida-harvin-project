@@ -3,19 +3,19 @@
 
     <!--heading on the nav bar-->
     <p class="navbar-header pull-left">
-      <a class="navbar-brand thick">
-        <b>Homepage</b>
+      <a [routerLink]="['/home']" class="navbar-brand thick">
+        <b>HomePage</b>
       </a>
     </p>
 
-    <p class="navbar-header pull-left">
-      <a [routerLink]="['/login']" class="navbar-brand">
+    <p class="navbar-header pull-left" *ngIf="!isLoggedin">
+      <a [routerLink]="['/login']" class="navbar-brand thick">
         <b>Login</b>
       </a>
     </p>
 
     <p class="navbar-header pull-left">
-      <a [routerLink]="['/leagues']" class="navbar-brand">
+      <a [routerLink]="['']" class="navbar-brand">
         <b>Leagues</b>
       </a>
     </p>

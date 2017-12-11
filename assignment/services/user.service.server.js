@@ -64,7 +64,7 @@ module.exports = function (app) {
       if (!user) { return res.redirect('/login'); }
       req.logIn(user, function(err) {
         if (err) { return next(err); }
-        return res.redirect('/user/' + user._id);
+        return res.redirect('/profile');
       });
     })(req, res, next);
   });
@@ -247,7 +247,7 @@ module.exports = function (app) {
   function deleteUser(req,res){
     var uId = req.params["userId"];
     userModel
-      .updateUser(user._id,user)
+      .deleteUser(uId)
       .then(function (status) {
         res.json(status);
       });

@@ -131,7 +131,7 @@ export class UserService {
       });
   }
 
-  deleteUser(userId) {
+  deleteUser(userId: string) {
     const url = this.baseUrl + '/api/user/' + userId;
     return this.http.delete(url)
       .map((response: Response) => {

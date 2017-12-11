@@ -8,14 +8,14 @@
       </a>
     </p>
 
-    <p class="navbar-header pull-left">
+    <p class="navbar-header pull-left" *ngIf="!isLoggedin">
       <a [routerLink]="['/login']" class="navbar-brand thick">
         <b>Login</b>
       </a>
     </p>
 
     <p class="navbar-header pull-left">
-      <a [routerLink]="['/leagues']" class="navbar-brand">
+      <a [routerLink]="['']" class="navbar-brand">
         <b>Leagues</b>
       </a>
     </p>
@@ -27,7 +27,7 @@
     </p>
 
     <!--tick mark-->
-    <p class="navbar-text pull-right">
+    <p class="navbar-text pull-right" *ngIf="isLoggedin">
       <a [routerLink]="['/league','new']" class="navbar-link">
         <span class="glyphicon glyphicon-plus"></span>
       </a>
@@ -51,7 +51,7 @@
         </div>
         <div class="col-md-3 hidden-xs hidden-sm">Users: {{league.users_id.length}}</div>
         <div class="col-xs-4 col-sm-4 col-md-3">
-          <a [routerLink]="['/user',uId,'league',league._id,'ppsearch']">Edit Player Pool</a>
+          <a [routerLink]="['/leagues',league._id,'ppsearch']">Edit Player Pool</a>
         </div>
         <div class="col-md-3 col-xs-4 col-sm-4">
           <a [routerLink]="['/leagues',league._id]" class="pull-right">

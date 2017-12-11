@@ -37,15 +37,14 @@
 
 <div class="container-fluid">
   <ul class="list-group">
-    <li *ngFor="let league of leagueList" class="list-group-item">
+    <li *ngFor="let user of userList" class="list-group-item">
       <div class="row">
         <div class="col-xs-4 col-sm-4 col-md-3">
-          <a [routerLink]="['/leagues',league._id,'teams']">{{league.name}}</a>
+          {{user.username}}
         </div>
-        <div class="col-md-3 hidden-xs hidden-sm">Users: {{league.users_id.length}}</div>
         <div class="col-md-3 col-xs-4 col-sm-4">
           <button class="btn btn-block btn-danger"
-            (click)="deleteLeague(league._id)">Delete</button>
+                  (click)="deleteUser(user._id)">Delete</button>
         </div>
       </div>
     </li>

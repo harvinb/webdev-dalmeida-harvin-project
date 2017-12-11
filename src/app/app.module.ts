@@ -33,6 +33,7 @@ import {SharedService} from './services/shared.service';
 import {AuthGuard} from './services/auth-guard.service';
 import { AdminLeagueListComponent } from './components/league/admin-league-list/admin-league-list.component';
 import {AdminServiceClient} from './services/admin.service.client';
+import { AdminUserCrudComponent } from './components/user/admin-user-crud/admin-user-crud.component';
 
 @NgModule({
   // Declare components here
@@ -56,7 +57,8 @@ import {AdminServiceClient} from './services/admin.service.client';
     HomeTeamComponent,
     HomeTeamDetailsComponent,
     HomeMatchesComponent,
-    AdminLeagueListComponent
+    AdminLeagueListComponent,
+    AdminUserCrudComponent
   ],
   imports: [
     BrowserModule,
