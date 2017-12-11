@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-@Injectable()
+import {User} from '../models/user/user.model.client';
 
+@Injectable()
 export class SharedService {
-  user = '';
+  user: User = null;
 }

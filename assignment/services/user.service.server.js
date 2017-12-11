@@ -12,6 +12,20 @@ module.exports = function (app) {
   }
 
   passport.deserializeUser(deserializeUser);
+
+  function deserializeUser(user, done) {
+    userModel
+      .findUserById(user._id)
+      .then(
+        function(user){
+          done(null, user);
+        },
+        function(err){
+          done(err, null);
+        }
+      );
+  }
+
   function localStrategy(username, password, done) {
     userModel
       .findUserByUsername(username)
@@ -25,19 +39,6 @@ module.exports = function (app) {
         },
         function(err) {
           if (err) { return done(err); }
-        }
-      );
-  }
-
-  function deserializeUser(user, done) {
-    userModel
-      .findUserById(user._id)
-      .then(
-        function(user){
-          done(null, user);
-        },
-        function(err){
-          done(err, null);
         }
       );
   }

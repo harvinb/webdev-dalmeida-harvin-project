@@ -2,7 +2,7 @@ export class Team {
   _id: string;
   name: string;
   leagueId: string;
-  userId: string;
+  userId: any;
   ppList: string[];
   points: number;
 

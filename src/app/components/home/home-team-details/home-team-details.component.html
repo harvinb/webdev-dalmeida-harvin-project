@@ -1,6 +1,12 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
 
+    <p class="navbar-text pull-left">
+      <a [routerLink]="['/leagues',team.leagueId,'teams']" class="navbar-link">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </p>
+
     <!--heading on the nav bar-->
     <p class="navbar-header pull-left">
       <a class="navbar-brand thick">
@@ -26,34 +32,45 @@
       </a>
     </p>
 
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="h1">{{team.name}}</div>
+  <div class="h2">Owner: {{team.userId.username}}</div>
+
+  <div class="h2">Players</div>
+  <div class="h3" *ngIf="isLoggedin && (team.userId._id === user._id) && proPlayerList.length < 5">
+    <a [routerLink]="['/leagues',team.leagueId,'team',team._id,'ppool']">Add Players</a>
+  </div>
+
+    <ul class="list-group">
+      <li *ngFor="let player of proPlayerList" class="list-group-item">
+        <div class="row">
+          <div class="col-xs-9 col-sm-6 col-md-4">
+            <a [routerLink]="['/project','players',player.account_id]">{{player.name}}</a>
+          </div>
+          <div class="col-md-4">Points: {{player.fantasy_role}}</div>
+          <div class="col-md-4" *ngIf="isLoggedin && (team.userId._id === user._id)">
+            <button class="btn-block btn-primary"
+              (click)="removeFromTeam(player.account_id)">Remove</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+
+  <div class="h2">Total Points: {{totalPoints}}</div>
+  <div class="h2">Comments </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid" *ngIf="isLoggedin">
     <p class="navbar-text pull-right">
-      <a [routerLink]="['/user', pUserId]" class="navbar-link">
+      <a [routerLink]="['/profile']" class="navbar-link">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>
 
   </div>
 </nav>
-
-<div class="h1">{{team.name}}</div>
-<div class="h2">Owner: {{user.username}}</div>
-
-<div class="h2">Players</div>
-<div class="container-fluid">
-  <ul class="list-group">
-    <li *ngFor="let player of proPlayerList" class="list-group-item">
-      <div class="row">
-        <div class="col-xs-9 col-sm-6 col-md-4">
-          <a [routerLink]="['/project','players',player.account_id]">{{player.name}}</a>
-        </div>
-        <div class="col-md-4">Points: {{player.fantasy_role}}</div>
-        <div class="col-md-4">
-          <button class="btn-block btn-primary">Change</button>
-        </div>
-      </div>
-    </li>
-  </ul>
-</div>
-
-<div class="h2">Total Points: {{totalPoints}}</div>
-<div class="h2">Comments </div>

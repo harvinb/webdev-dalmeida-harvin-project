@@ -18,17 +18,22 @@ function createLeagueForUser(league) {
 function findAllLeaguesForUser(userId) {
   return LeagueModel.find({owner_id: userId})
     .populate('owner_id', 'username')
+    .populate('users_id', 'username')
     .exec();
 }
 
 function getAllLeagues() {
   return LeagueModel.find()
     .populate('owner_id', 'username')
+    .populate('users_id', 'username')
     .exec();
 }
 
 function findLeagueById(leagueId) {
-  return LeagueModel.findById(leagueId);
+  return LeagueModel.findById(leagueId)
+    .populate('owner_id', 'username')
+    .populate('users_id', 'username')
+    .exec();
 }
 
 function updateLeague(leagueId, league) {

@@ -1,3 +1,55 @@
-<p>
-  team-new works!
-</p>
+<div class="container-fluid">
+  <nav class="navbar navbar-default navbar-fixed-top">
+
+        <p class="navbar-text pull-left">
+          <a [routerLink]="['/leagues']" class="navbar-link">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+        </p>
+        <!--heading on the nav bar-->
+        <p class="navbar-header pull-left">
+          <a class="navbar-brand thick">
+            <b>New Team</b>
+          </a>
+        </p>
+        <!--tick mark-->
+        <p class="navbar-text pull-right" id="combinedtick">
+          <button form="ngForm" class="navbar-link" [disabled]="!f.valid">
+            <span class="glyphicon glyphicon-ok"></span>
+          </button>
+        </p>
+
+
+  </nav>
+</div>
+
+<div class="container-fluid">
+  <form (ngSubmit) = "createNewTeam()" #f="ngForm" id="ngForm">
+  <div class="form-group">
+    <label for="teamname">Team Name</label>
+    <input type="text"
+           name="teamname"
+           class="form-control"
+           id="teamname"
+           ngModel
+           required
+           #teamName="ngModel"
+           placeholder="Name">
+    <span class="help-block" *ngIf="!teamName.valid && teamName.touched">
+      Please enter Team Name!
+    </span>
+  </div>
+</form>
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/profile']" class="navbar-link">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>

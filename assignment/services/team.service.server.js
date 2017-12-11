@@ -25,7 +25,7 @@ module.exports = function (app) {
     var team=req.body;
     team.leagueId = req.params["leagueId"];
     team.userId = req.params["userId"];
-    teamModel.createLeagueForUser(team).
+    teamModel.createTeamForUser(team).
     then(function (newteam) {
       res.json(newteam);
     });

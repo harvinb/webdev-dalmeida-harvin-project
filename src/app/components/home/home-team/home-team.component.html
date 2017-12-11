@@ -1,6 +1,12 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
 
+    <p class="navbar-text pull-left">
+      <a [routerLink]="['/leagues']" class="navbar-link">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </p>
+
     <!--heading on the nav bar-->
     <p class="navbar-header pull-left">
       <a class="navbar-brand thick">
@@ -21,14 +27,15 @@
     </p>
 
     <p class="navbar-header pull-left">
-      <a [routerLink]="['/login']" class="navbar-brand">
+      <a [routerLink]="['/matches']" class="navbar-brand">
         <b>Matches</b>
       </a>
     </p>
 
-    <p class="navbar-text pull-right">
-      <a [routerLink]="['/user', pUserId]" class="navbar-link">
-        <span class="glyphicon glyphicon-user"></span>
+    <!--tick mark-->
+    <p class="navbar-text pull-right" *ngIf="isLoggedin">
+      <a [routerLink]="['/leagues',lId,'teams','new']" class="navbar-link">
+        <span class="glyphicon glyphicon-plus"></span>
       </a>
     </p>
 
@@ -42,9 +49,21 @@
         <div class="col-xs-9 col-sm-6 col-md-4">
           <a [routerLink]="['/team',team._id]">{{team.name}}</a>
         </div>
-        <div class="col-md-4 hidden-xs hidden-sm">Owner: {{findTeamOwner(team.userId)}}</div>
-        <div class="col-md-4">Points?</div>
+        <div class="col-md-4 hidden-xs hidden-sm">Owner: {{team.userId.username}}</div>
+        <!-- <div class="col-md-4">Points?</div> -->
+        <div class="col-md-4">Edit cog</div>
       </div>
     </li>
   </ul>
 </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid" *ngIf="isLoggedin">
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/profile']" class="navbar-link">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>

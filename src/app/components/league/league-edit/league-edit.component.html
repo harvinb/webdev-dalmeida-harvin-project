@@ -1,3 +1,94 @@
-<p>
-  league-edit works!
-</p>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <p class="navbar-text pull-left">
+      <a [routerLink]="['/leagues']" class="navbar-link">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </p>
+
+    <!--heading on the nav bar-->
+    <p class="navbar-header pull-left">
+      <a class="navbar-brand thick">
+        <b>Leagues</b>
+      </a>
+    </p>
+
+    <p class="navbar-header pull-left">
+      <a [routerLink]="['']" class="navbar-brand thick">
+        <b>Homepage</b>
+      </a>
+    </p>
+
+    <p class="navbar-header pull-left">
+      <a [routerLink]="['/leagues']" class="navbar-brand">
+        <b>Leagues</b>
+      </a>
+    </p>
+
+    <p class="navbar-header pull-left">
+      <a [routerLink]="['/matches']" class="navbar-brand">
+        <b>Matches</b>
+      </a>
+    </p>
+
+    <p class="navbar-text pull-right" id="combinedtick">
+      <button form="ngForm" class="navbar-link" [disabled]="!f.valid">
+        <span class="glyphicon glyphicon-ok"></span>
+      </button>
+    </p>
+
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <form (ngSubmit) = "updateCurLeague()" #f="ngForm" id="ngForm">
+    <div class="form-group">
+      <label for="leaguename">League Name</label>
+      <input type="text"
+             [(ngModel)]="league.name"
+             name="leaguename"
+             class="form-control"
+             id="leaguename"
+             ngModel
+             required
+             #leagueName="ngModel"
+             placeholder="Name">
+      <span class="help-block" *ngIf="!leagueName.valid && leagueName.touched">
+        Please enter Website Name!
+      </span>
+    </div>
+  </form>
+
+  <h3>Users</h3>
+  <ul class="list-group">
+    <li *ngFor="let members of league.users_id" class="list-group-item">
+      <div class="row">
+        <div class="col-xs-9 col-sm-6 col-md-3">
+          <a [routerLink]="['/profile',members._id]">{{members.username}}</a>
+        </div>
+        <div class="col-xs-3 col-sm-6 col-md-3">
+          <button class="btn btn-primary btn-block"
+                  (click)="removeUser(members._id)">Remove</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+
+
+  <a class="btn btn-danger btn-block"
+     (click)="deleteCurrentLeague()">Delete</a>
+</div>
+
+<!-- Footer -->
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/user', uId]" class="navbar-link">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>

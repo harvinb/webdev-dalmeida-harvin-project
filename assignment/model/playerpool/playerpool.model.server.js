@@ -16,7 +16,7 @@ function createPoolForLeague(pool) {
 }
 
 function findAllPoolsForLeague(leagueId) {
-  return PoolModel.find({leagueId: leagueId});
+  return PoolModel.findOne({leagueId: leagueId});
 }
 
 function getAllPools() {

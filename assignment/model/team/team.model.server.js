@@ -28,7 +28,9 @@ function getAllTeams() {
 }
 
 function findTeamById(teamId) {
-  return TeamModel.findById(teamId);
+  return TeamModel.findById(teamId)
+    .populate('userId', 'username')
+    .exec();
 }
 
 function updateTeam(teamId, team) {

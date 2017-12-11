@@ -15,6 +15,24 @@
       </a>
     </p>
 
+    <p class="navbar-header pull-left">
+      <a [routerLink]="['']" class="navbar-brand thick">
+        <b>Homepage</b>
+      </a>
+    </p>
+
+    <p class="navbar-header pull-left">
+      <a [routerLink]="['/leagues']" class="navbar-brand">
+        <b>Leagues</b>
+      </a>
+    </p>
+
+    <p class="navbar-header pull-left">
+      <a [routerLink]="['/matches']" class="navbar-brand">
+        <b>Matches</b>
+      </a>
+    </p>
+
     <!--tick mark-->
     <p class="navbar-text pull-right">
       <a [routerLink]="['/user',uId,'league','new']" class="navbar-link">
@@ -25,16 +43,22 @@
   </div>
 </nav>
 
+<div class="container-fluid">
+  <h3>My Owned Leagues</h3>
+</div>
 
 <div class="container-fluid">
   <ul class="list-group">
     <li *ngFor="let league of leagueList" class="list-group-item">
       <div class="row">
-        <div class="col-xs-9 col-sm-6 col-md-3">
+        <div class="col-xs-4 col-sm-4 col-md-3">
           <a [routerLink]="['/user',uId,'league',league._id,'team']">{{league.name}}</a>
         </div>
-        <div class="col-md-3 hidden-xs hidden-sm">{{league.owner_id}}</div>
-        <div class="col-md-3">
+        <div class="col-md-3 hidden-xs hidden-sm">Users: {{league.users_id.length}}</div>
+        <div class="col-xs-4 col-sm-4 col-md-3">
+          <a [routerLink]="['/user',uId,'league',league._id,'ppsearch']">Edit Player Pool</a>
+        </div>
+        <div class="col-md-3 col-xs-4 col-sm-4">
           <a [routerLink]="['/user',uId,'website',league._id]" class="pull-right">
             <span class="glyphicon glyphicon-cog"> </span>
           </a>
@@ -42,6 +66,10 @@
       </div>
     </li>
   </ul>
+</div>
+
+<div class="container-fluid">
+  <h3>My Joined Leagues</h3>
 </div>
 
 <!-- Footer -->

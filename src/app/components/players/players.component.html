@@ -1,14 +1,95 @@
-<h1>Players API test</h1>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
 
-<label>Player Search</label>
-<input [(ngModel)]="playerName"
-       placeholder="Miracle"
-       class="form-control"/>
-<button (click)="searchPlayer()"
-        class="btn btn-primary btn-block"> Search </button>
+    <p class="navbar-text pull-left" >
+      <a [routerLink]="['/leagues',leagueId,'teams']" class="navbar-link">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </p>
 
-<ul class="list-group">
-  <li *ngFor="let proplayer of playerList">
-    Name : <a [routerLink]="['/project','players',proplayer.account_id]">{{proplayer.name}}</a>
+    <!--heading on the nav bar-->
+    <p class="navbar-header pull-left">
+      <a class="navbar-brand thick">
+        <b>Leagues</b>
+      </a>
+    </p>
+
+    <p class="navbar-header pull-left">
+      <a [routerLink]="['']" class="navbar-brand thick">
+        <b>Homepage</b>
+      </a>
+    </p>
+
+    <p class="navbar-header pull-left">
+      <a [routerLink]="['/leagues']" class="navbar-brand">
+        <b>Leagues</b>
+      </a>
+    </p>
+
+    <p class="navbar-header pull-left">
+      <a [routerLink]="['/matches']" class="navbar-brand">
+        <b>Matches</b>
+      </a>
+    </p>
+
+    <!--tick mark-->
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/user',uId,'league','new']" class="navbar-link">
+        <span class="glyphicon glyphicon-plus"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
+
+
+
+<div *ngIf="isLoggedin" class="container-fluid">
+  <label>Player Search</label>
+  <input [(ngModel)]="playerSearchName"
+         placeholder="Miracle"
+          class="form-control"/>
+  <button (click)="searchPlayer()"
+          class="btn btn-primary btn-block"> Search </button>
+</div>
+
+<div *ngIf="isLoggedin && isOwner" class="container-fluid">
+<ul class="list-group" >
+  <li *ngFor="let proplayer of playerList" class="list-group-item">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-3">
+        Name : <a [routerLink]="['/project','players',proplayer.account_id]">{{proplayer.name}}</a>
+      </div>
+      <div *ngIf="isLoggedin" class="col-xs-2 col-sm-2 col-md-2">
+        <button class="btn btn-primary btn-block" (click)="addPlayer(proplayer.account_id,proplayer.name)">Add Player</button>
+      </div>
+    </div>
   </li>
 </ul>
+</div>
+
+
+<div class="container-fluid">
+  <h2>Current Players in Pool</h2>
+</div>
+
+<div class="container-fluid">
+  <ul class="list-group" >
+    <li *ngFor="let poolplayer of playerpool.playerPool" class="list-group-item">
+      <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-3">
+          Name : <a [routerLink]="['/project','players',poolplayer.ppid]">{{poolplayer.ppname}}</a>
+        </div>
+        <div *ngIf="isLoggedin && isOwner" class="col-xs-2 col-sm-2 col-md-2">
+          <button class="btn btn-primary btn-block"
+                  (click)="removePlayer(poolplayer.ppid,poolplayer.ppname)">Remove Player</button>
+        </div>
+        <div *ngIf="isLoggedin && (tid !== null) && (team.ppList.length < 5) && team.userId._id === user._id"
+             class="col-xs-2 col-sm-2 col-md-2">
+          <button class="btn btn-primary btn-block"
+                  (click)="addPlayertoTeam(poolplayer.ppid)">Add Player To Team</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

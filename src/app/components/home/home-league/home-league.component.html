@@ -9,7 +9,7 @@
     </p>
 
     <p class="navbar-header pull-left">
-      <a [routerLink]="['/login']" class="navbar-brand">
+      <a [routerLink]="['/login']" class="navbar-brand thick">
         <b>Login</b>
       </a>
     </p>
@@ -26,28 +26,92 @@
       </a>
     </p>
 
+    <!--tick mark-->
     <p class="navbar-text pull-right">
-      <a [routerLink]="['/user', pUserId]" class="navbar-link">
+      <a [routerLink]="['/league','new']" class="navbar-link">
+        <span class="glyphicon glyphicon-plus"></span>
+      </a>
+    </p>
+
+  </div>
+</nav>
+<!--
+
+-->
+<div *ngIf="isLoggedin" class="container-fluid">
+  <h3>My Owned Leagues</h3>
+</div>
+
+<div class="container-fluid" *ngIf="isLoggedin">
+  <ul class="list-group">
+    <li *ngFor="let league of leagueList" class="list-group-item">
+      <div class="row" *ngIf="league.owner_id._id === user._id">
+        <div class="col-xs-4 col-sm-4 col-md-3">
+          <a [routerLink]="['/leagues',league._id,'teams']">{{league.name}}</a>
+        </div>
+        <div class="col-md-3 hidden-xs hidden-sm">Users: {{league.users_id.length}}</div>
+        <div class="col-xs-4 col-sm-4 col-md-3">
+          <a [routerLink]="['/user',uId,'league',league._id,'ppsearch']">Edit Player Pool</a>
+        </div>
+        <div class="col-md-3 col-xs-4 col-sm-4">
+          <a [routerLink]="['/leagues',league._id]" class="pull-right">
+            <span class="glyphicon glyphicon-cog"> </span>
+          </a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="container-fluid" *ngIf="isLoggedin">
+  <h3>My Joined Leagues</h3>
+</div>
+
+<div class="container-fluid" *ngIf="isLoggedin">
+  <ul class="list-group">
+    <li *ngFor="let league of leagueList" class="list-group-item">
+      <div class="row" *ngIf="isPartoFLeague(league)">
+        <div class="col-xs-9 col-sm-6 col-md-3">
+          <a [routerLink]="['/leagues',league._id,'teams']">{{league.name}}</a>
+        </div>
+        <div class="col-md-3 hidden-xs hidden-sm">Users : {{league.users_id.length}}</div>
+        <div class="col-md-3 hidden-xs col-sm-3">Owner: {{league.owner_id.username}}</div>
+        <div class="col-md-3 col-sm-3 col-xs-3" *ngIf="isLoggedin">
+          <a (click)="leaveLeague(league._id,league)" class="pull-right">Leave</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="container-fluid">
+  <h3>Available Leagues</h3>
+</div>
+
+<div class="container-fluid">
+  <ul class="list-group">
+    <li *ngFor="let league of leagueList" class="list-group-item">
+      <div class="row" *ngIf="!(isPartoFLeague(league))">
+        <div class="col-xs-9 col-sm-6 col-md-3">
+          <a [routerLink]="['/leagues',league._id,'teams']">{{league.name}}</a>
+        </div>
+        <div class="col-md-3 hidden-xs hidden-sm">Users : {{league.users_id.length}}</div>
+        <div class="col-md-3 hidden-xs col-sm-3">Owner: {{league.owner_id.username}}</div>
+        <div class="col-md-3 col-sm-3 col-xs-3" *ngIf="isLoggedin">
+          <a (click)="joinLeague(league._id,league)" class="pull-right">Join</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid" *ngIf="isLoggedin">
+    <p class="navbar-text pull-right">
+      <a [routerLink]="['/profile']" class="navbar-link">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>
 
   </div>
 </nav>
-
-<div class="container-fluid">
-  <ul class="list-group">
-    <li *ngFor="let league of leagueList" class="list-group-item">
-      <div class="row">
-        <div class="col-xs-9 col-sm-6 col-md-3">
-          <a [routerLink]="['/leagues',league._id,'teams']">{{league.name}}</a>
-        </div>
-        <div class="col-md-3 hidden-xs hidden-sm">Users : {{league.users_id.length}}</div>
-        <div class="col-md-3 hidden-xs col-sm-3">{{findLeagueOwner(league.owner_id)}}</div>
-        <div class="col-md-3 col-sm-3 col-xs-3">
-          <a [routerLink]="['/user',uId,'website',league._id]" class="pull-right">Join</a>
-        </div>
-      </div>
-    </li>
-  </ul>
-</div>

@@ -8,6 +8,7 @@ import {PlayerServiceClient} from '../../../services/player.service.client';
 import {ProPlayer} from '../../../models/players/proplayer.model.client';
 import {MatchServiceClient} from '../../../services/match.service.client';
 import {Match} from '../../../models/players/match.model.client';
+import {SharedService} from '../../../services/shared.service';
 
 @Component({
   selector: 'app-home-team-details',
@@ -17,6 +18,7 @@ import {Match} from '../../../models/players/match.model.client';
 export class HomeTeamDetailsComponent implements OnInit {
   tId: string;
   user: User;
+  isLoggedin: boolean;
   team: Team;
   proPlayerList: ProPlayer[] = [];
   totalPoints: number;
@@ -24,17 +26,21 @@ export class HomeTeamDetailsComponent implements OnInit {
   constructor(private teamService: TeamService,
               private route: ActivatedRoute,
               private matchService: MatchServiceClient,
-              private userService: UserService,
+              private sharedService: SharedService,
               private playerService: PlayerServiceClient) { }
 
   ngOnInit() {
+    this.user = this.sharedService.user || null;
+    this.isLoggedin = false;
+    if (this.user !== null) {
+      this.isLoggedin = true;
+    }
     this.totalPoints = 0;
     this.route.params.subscribe(params => {
       this.tId = params['tid'];
       this.teamService.findTeamById(this.tId)
         .subscribe((team: Team) => {
           this.team = team;
-          this.getTeamOwner(team.userId);
           for (let player of this.team.ppList) {
             this.getPlayerDetails(Number(player));
           }
@@ -45,12 +51,18 @@ export class HomeTeamDetailsComponent implements OnInit {
     });
   }
 
-  getTeamOwner(id: string) {
-    this.userService.findUserById(id).
-    subscribe((user: User) => {
-      // console.log(user);
-      this.user = user;
-    });
+  removeFromTeam(playerId: number) {
+    const pid: string = playerId.toString();
+    const itemIndex = this.team.ppList.indexOf(pid);
+    if (itemIndex !== -1) {
+      this.team.ppList.splice(itemIndex, 1);
+      this.teamService.updateTeam(this.tId, this.team).
+        subscribe((response: Response) => {
+          console.log(response);
+          const index = this.proPlayerList.map(x => x.account_id).indexOf(playerId);
+          this.proPlayerList.splice(index, 1);
+      });
+    }
   }
 
   getPlayerDetails(playerId: number) {

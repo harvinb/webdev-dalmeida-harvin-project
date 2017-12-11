@@ -37,7 +37,7 @@ module.exports = function (app) {
   function findAllLeaguesForUser(req,res) {
     var uId = req.params["userId"];
     leagueModel
-      .createLeagueForUser(uId)
+      .findAllLeaguesForUser(uId)
       .then(function (leagues) {
         res.json(leagues);
       });
