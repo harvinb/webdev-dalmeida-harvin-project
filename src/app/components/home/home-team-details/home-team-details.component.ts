@@ -9,6 +9,8 @@ import {ProPlayer} from '../../../models/players/proplayer.model.client';
 import {MatchServiceClient} from '../../../services/match.service.client';
 import {Match} from '../../../models/players/match.model.client';
 import {SharedService} from '../../../services/shared.service';
+import {Comment} from '../../../models/comment/comment.model.client';
+import {CommentServiceClient} from '../../../services/comment.service.client';
 
 @Component({
   selector: 'app-home-team-details',
@@ -22,14 +24,29 @@ export class HomeTeamDetailsComponent implements OnInit {
   team: Team;
   proPlayerList: ProPlayer[] = [];
   totalPoints: number;
+  commentList: Comment[];
+
+  public editor;
+  public editorContent = `<h3>I am Example 02</h3>`;
+  public editorConfig = {
+    placeholder: 'asdf'
+  };
 
   constructor(private teamService: TeamService,
               private route: ActivatedRoute,
               private matchService: MatchServiceClient,
               private sharedService: SharedService,
-              private playerService: PlayerServiceClient) { }
+              private playerService: PlayerServiceClient,
+              private commentService: CommentServiceClient) { }
 
   ngOnInit() {
+    console.log(this.editorContent);
+    setTimeout(() => {
+      this.editorContent = '<h1>content changed!</h1>';
+      console.log('you can use the quill instance object to do something', this.editor);
+      // this.editor.disable();
+    }, 2800);
+
     this.user = this.sharedService.user || null;
     this.isLoggedin = false;
     if (this.user !== null) {
@@ -48,7 +65,16 @@ export class HomeTeamDetailsComponent implements OnInit {
           console.log(this.team);
           console.log(this.proPlayerList);
         });
+      this.commentService.findAllCommentsForTeam(this.tId).
+      subscribe((cList: Comment[]) => {
+        this.commentList = cList;
+        // console.log('hello');
+        console.log(this.commentList);
+      });
     });
+
+
+
   }
 
   removeFromTeam(playerId: number) {
@@ -88,5 +114,23 @@ export class HomeTeamDetailsComponent implements OnInit {
         this.proPlayerList.push(proP);
       });
   }
+
+  onEditorBlured(quill) {
+    console.log('editor blur!', quill);
+  }
+
+  onEditorFocused(quill) {
+    console.log('editor focus!', quill);
+  }
+
+  onEditorCreated(quill) {
+    this.editor = quill;
+    console.log('quill is ready! this is current quill instance object', quill);
+  }
+
+  onContentChanged({ quill, html, text }) {
+    console.log('quill content is changed!', quill, html, text);
+  }
+
 
 }

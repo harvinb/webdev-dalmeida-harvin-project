@@ -61,8 +61,19 @@
 
 
   <div class="h2">Total Points: {{totalPoints}}</div>
-  <div class="h2">Comments </div>
+  <div class="h2">Comments NOTE: Editor not working</div>
+  <ul class="list-group">
+    <li *ngFor="let cmt of commentList" class="list-group-item">
+      <div class="row">
+        {{cmt.cdata}}
+      </div>
+      <!-- <div class="ql-editor preview" [innerHTML]="cmt.cdata"></div> -->
+    </li>
+  </ul>
+
 </div>
+
+<quill-editor [(ngModel)]="editorContent"></quill-editor>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid" *ngIf="isLoggedin">

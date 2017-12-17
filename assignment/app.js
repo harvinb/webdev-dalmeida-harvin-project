@@ -5,4 +5,5 @@ module.exports = function(app) {
   require("./services/league.service.server.js")(app);
   require("./services/playerpool.service.server")(app);
   require("./services/team.service.server.js")(app);
+  require("./services/comment.server.server.js")(app);
 };

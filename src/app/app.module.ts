@@ -7,6 +7,7 @@ import { TestComponent } from './components/test/test.component';
 import {Routing} from './app.routing';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
+import { QuillEditorModule } from 'ngx-quill-editor';
 import { LoginComponent } from './components/user/login/login.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RegisterComponent } from './components/user/register/register.component';
@@ -35,6 +36,8 @@ import { AdminLeagueListComponent } from './components/league/admin-league-list/
 import {AdminServiceClient} from './services/admin.service.client';
 import { AdminUserCrudComponent } from './components/user/admin-user-crud/admin-user-crud.component';
 import { ViewProfileComponent } from './components/user/view-profile/view-profile.component';
+import {CommentServiceClient} from './services/comment.service.client';
+
 
 @NgModule({
   // Declare components here
@@ -66,11 +69,12 @@ import { ViewProfileComponent } from './components/user/view-profile/view-profil
     BrowserModule,
     HttpModule,
     FormsModule,
+    QuillEditorModule,
     Routing
   ],
   // Client Side services here
   providers: [UserService, LeagueService, TeamService, PlayerServiceClient, MatchServiceClient,
-              SharedService, AuthGuard, AdminServiceClient],
+              SharedService, AuthGuard, AdminServiceClient, CommentServiceClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
