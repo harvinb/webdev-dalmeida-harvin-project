@@ -65,7 +65,7 @@
   <ul class="list-group">
     <li *ngFor="let cmt of commentList" class="list-group-item">
       <div class="row">
-        {{cmt.cdata}}
+        {{cmt.cdata}} -- <a [routerLink] = "['/user',cmt.userId._id]">{{cmt.userId.username}}</a>
       </div>
       <!-- <div class="ql-editor preview" [innerHTML]="cmt.cdata"></div> -->
     </li>
