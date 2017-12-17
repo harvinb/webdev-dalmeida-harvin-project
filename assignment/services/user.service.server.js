@@ -189,6 +189,7 @@ module.exports = function (app) {
     //user.username = req.body.username;
     //user.password = req.body.password;
     // users.push(user);
+    user.password = bcrypt.hashSync(user.password);
     userModel
       .createUser(user)
       .then(function (user) {

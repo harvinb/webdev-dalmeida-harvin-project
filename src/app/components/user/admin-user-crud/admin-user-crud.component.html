@@ -36,6 +36,43 @@
 </nav>
 
 <div class="container-fluid">
+  <h3>Create User</h3>
+  <div *ngIf="errorFlag"
+       class="alert alert-danger">
+    {{errorMsg}}
+  </div>
+  <form (ngSubmit) = "userCreate()" #f="ngForm">
+    <input placeholder="username"
+           name="username"
+           type="text"
+           ngModel
+           required
+           #username="ngModel"
+           class="form-control"/>
+    <span class="help-block" *ngIf="!username.valid && username.touched">
+      Please enter username!
+    </span>
+
+    <input placeholder="password"
+           name="password"
+           type="password"
+           class="form-control"
+           ngModel
+           required
+           #password="ngModel"/>
+    <span class="help-block" *ngIf="!password.valid && password.touched">
+      Please enter valid password!
+    </span>
+
+    <button class="btn btn-primary btn-block"
+            type="submit"
+            [disabled]="!f.valid">Create User</button>
+
+  </form>
+</div>
+
+<div class="container-fluid">
+  <h3>Current Users</h3>
   <ul class="list-group">
     <li *ngFor="let user of userList" class="list-group-item">
       <div class="row">
