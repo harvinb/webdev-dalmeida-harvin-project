@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
 
   profileupdate() {
 
-    this.userService.findUserById(this.pUser.username).
+    this.userService.findUserByUsername(this.pUser.username).
     subscribe((user: User) => {
       if (user && (user._id !== this.pUserId) ) {
         this.errorMsg = 'Username is already taken';

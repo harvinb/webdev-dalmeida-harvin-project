@@ -4,6 +4,7 @@ var TeamSchema = require("./team.schema.server");
 var TeamModel = mongoose.model("TeamModel", TeamSchema);
 
 TeamModel.createTeamForUser = createTeamForUser;
+TeamModel.findAllTeamsForUser = findAllTeamsForUser;
 TeamModel.findAllTeamsForLeague = findAllTeamsForLeague;
 TeamModel.getAllTeams = getAllTeams;
 TeamModel.findTeamById = findTeamById;
@@ -13,6 +14,12 @@ module.exports = TeamModel;
 
 function createTeamForUser(team) {
   return TeamModel.create(team);
+}
+
+function findAllTeamsForUser(userId) {
+  return TeamModel.find({userId: userId})
+    .populate('leagueId', 'name')
+    .exec();
 }
 
 function findAllTeamsForLeague(leagueId) {

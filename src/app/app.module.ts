@@ -34,6 +34,7 @@ import {AuthGuard} from './services/auth-guard.service';
 import { AdminLeagueListComponent } from './components/league/admin-league-list/admin-league-list.component';
 import {AdminServiceClient} from './services/admin.service.client';
 import { AdminUserCrudComponent } from './components/user/admin-user-crud/admin-user-crud.component';
+import { ViewProfileComponent } from './components/user/view-profile/view-profile.component';
 
 @NgModule({
   // Declare components here
@@ -58,7 +59,8 @@ import { AdminUserCrudComponent } from './components/user/admin-user-crud/admin-
     HomeTeamDetailsComponent,
     HomeMatchesComponent,
     AdminLeagueListComponent,
-    AdminUserCrudComponent
+    AdminUserCrudComponent,
+    ViewProfileComponent
   ],
   imports: [
     BrowserModule,

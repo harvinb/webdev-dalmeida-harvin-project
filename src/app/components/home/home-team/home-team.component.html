@@ -49,7 +49,9 @@
         <div class="col-xs-9 col-sm-6 col-md-4">
           <a [routerLink]="['/team',team._id]">{{team.name}}</a>
         </div>
-        <div class="col-md-4 hidden-xs hidden-sm">Owner: {{team.userId.username}}</div>
+        <div class="col-md-3 hidden-xs col-sm-3">Owner:
+          <a [routerLink]="['/user',team.userId._id]">{{team.userId.username}}</a>
+        </div>
         <!-- <div class="col-md-4">Points?</div> -->
         <div class="col-md-3 col-xs-4 col-sm-4" *ngIf="isLoggedin && isTeamOwnerCog(team.userId._id)">
           <a [routerLink]="['/leagues',lId,'team',team._id,'edit']" class="pull-right">

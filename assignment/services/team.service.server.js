@@ -4,6 +4,7 @@ module.exports = function (app) {
 
   app.post("/api/user/:userId/league/:leagueId/team", createTeam);
   app.get("/api/league/:leagueId/team",findAllTeamsForLeague);
+  app.get("/api/user/:userId/team",findAllTeamsForUser);
   app.get("/api/team/:teamId", findTeamById);
   app.put("/api/team/:teamId", updateTeam);
   app.delete("/api/team/:teamId", deleteTeam);
@@ -29,6 +30,15 @@ module.exports = function (app) {
     then(function (newteam) {
       res.json(newteam);
     });
+  }
+
+  function findAllTeamsForUser(req,res) {
+    var uid = req.params["userId"];
+    teamModel
+      .findAllTeamsForUser(uid)
+      .then(function (teams) {
+        res.json(teams);
+      });
   }
 
   function findAllTeamsForLeague(req,res) {

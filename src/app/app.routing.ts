@@ -26,6 +26,7 @@ import {TeamEditComponent} from './components/team/team-edit/team-edit.component
 import {AdminLeagueListComponent} from './components/league/admin-league-list/admin-league-list.component';
 import {AdminServiceClient} from './services/admin.service.client';
 import {AdminUserCrudComponent} from './components/user/admin-user-crud/admin-user-crud.component';
+import {ViewProfileComponent} from './components/user/view-profile/view-profile.component';
 
 const APP_ROUTES: Routes = [
   {path: '',                                  component: HomeLeagueComponent},
@@ -49,6 +50,7 @@ const APP_ROUTES: Routes = [
   {path: 'leagues/:lid/team/:tid/edit',       component: TeamEditComponent, canActivate: [AuthGuard]},
   {path: 'admin/league',                      component: AdminLeagueListComponent, canActivate: [AdminServiceClient]},
   {path: 'admin/user',                        component: AdminUserCrudComponent, canActivate: [AdminServiceClient]},
+  {path: 'user/:uid',                         component: ViewProfileComponent},
 ];
 
 // Export the routes as module providers

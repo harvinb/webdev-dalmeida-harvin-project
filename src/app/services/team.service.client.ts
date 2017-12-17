@@ -14,7 +14,8 @@ export class TeamService {
 
   api = {
     'createTeam'   : this.createTeam,
-    'findAllTeamsForUser' : this.findAllTeamsForLeague,
+    'findAllTeamsForLeague' : this.findAllTeamsForLeague,
+    'findAllTeamsForUser' : this.findAllTeamsForUser,
     'findTeamById' : this.findTeamById,
     'updateTeam' : this.updateTeam,
     'deleteTeam' : this.deleteTeam
@@ -33,6 +34,14 @@ export class TeamService {
 
   findAllTeamsForLeague(tId: string) {
     const url = this.baseUrl + '/api/league/' + tId + '/team';
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
+  }
+
+  findAllTeamsForUser(uId: string) {
+    const url = this.baseUrl + '/api/user/' + uId + '/team';
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();

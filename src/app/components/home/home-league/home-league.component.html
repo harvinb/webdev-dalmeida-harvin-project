@@ -75,7 +75,9 @@
           <a [routerLink]="['/leagues',league._id,'teams']">{{league.name}}</a>
         </div>
         <div class="col-md-3 hidden-xs hidden-sm">Users : {{league.users_id.length}}</div>
-        <div class="col-md-3 hidden-xs col-sm-3">Owner: {{league.owner_id.username}}</div>
+        <div class="col-md-3 hidden-xs col-sm-3">Owner:
+          <a [routerLink]="['/user',league.owner_id._id]">{{league.owner_id.username}}</a>
+        </div>
         <div class="col-md-3 col-sm-3 col-xs-3" *ngIf="isLoggedin">
           <a (click)="leaveLeague(league._id,league)" class="pull-right">Leave</a>
         </div>
@@ -96,7 +98,9 @@
           <a [routerLink]="['/leagues',league._id,'teams']">{{league.name}}</a>
         </div>
         <div class="col-md-3 hidden-xs hidden-sm">Users : {{league.users_id.length}}</div>
-        <div class="col-md-3 hidden-xs col-sm-3">Owner: {{league.owner_id.username}}</div>
+        <div class="col-md-3 hidden-xs col-sm-3">Owner:
+          <a [routerLink]="['/user',league.owner_id._id]">{{league.owner_id.username}}</a>
+        </div>
         <div class="col-md-3 col-sm-3 col-xs-3" *ngIf="isLoggedin">
           <a (click)="joinLeague(league._id,league)" class="pull-right">Join</a>
         </div>

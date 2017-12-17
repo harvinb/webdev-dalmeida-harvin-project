@@ -32,7 +32,7 @@ export class HomeLeagueComponent implements OnInit {
       .subscribe((leagues: League[]) => {
         this.leagueList = leagues;
         for (let league of this.leagueList) {
-          // console.log(league.owner_id);
+           console.log(league.owner_id);
           //this.getLeagueOwner(league.owner_id);
         }
       });
